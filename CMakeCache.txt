@@ -190,6 +190,12 @@ freeparticle_BINARY_DIR:STATIC=/home/miguel/Dropbox/Maestria/codigos/dft/freepar
 //Value Computed by CMake
 freeparticle_SOURCE_DIR:STATIC=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle
 
+//Value Computed by CMake
+tests_BINARY_DIR:STATIC=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle
+
+//Value Computed by CMake
+tests_SOURCE_DIR:STATIC=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle
+
 
 ########################
 # INTERNAL cache entries

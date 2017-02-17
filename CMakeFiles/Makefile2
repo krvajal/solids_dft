@@ -98,6 +98,82 @@ clean: CMakeFiles/free.x.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/test.x.dir
+
+# All Build rule for target.
+CMakeFiles/test.x.dir/all:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/depend
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/requires
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=7,8,9 "Built target test.x"
+.PHONY : CMakeFiles/test.x.dir/all
+
+# Include target in all.
+all: CMakeFiles/test.x.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test.x.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test.x.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 0
+.PHONY : CMakeFiles/test.x.dir/rule
+
+# Convenience name for target.
+test.x: CMakeFiles/test.x.dir/rule
+
+.PHONY : test.x
+
+# clean rule for target.
+CMakeFiles/test.x.dir/clean:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/clean
+.PHONY : CMakeFiles/test.x.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/test.x.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/gth.x.dir
+
+# All Build rule for target.
+CMakeFiles/gth.x.dir/all:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/depend
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/requires
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=3,4,5,6 "Built target gth.x"
+.PHONY : CMakeFiles/gth.x.dir/all
+
+# Include target in all.
+all: CMakeFiles/gth.x.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/gth.x.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gth.x.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 0
+.PHONY : CMakeFiles/gth.x.dir/rule
+
+# Convenience name for target.
+gth.x: CMakeFiles/gth.x.dir/rule
+
+.PHONY : gth.x
+
+# clean rule for target.
+CMakeFiles/gth.x.dir/clean:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/clean
+.PHONY : CMakeFiles/gth.x.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/gth.x.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.

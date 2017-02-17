@@ -123,6 +123,32 @@ free.x/fast:
 	$(MAKE) -f CMakeFiles/free.x.dir/build.make CMakeFiles/free.x.dir/build
 .PHONY : free.x/fast
 
+#=============================================================================
+# Target rules for targets named test.x
+
+# Build rule for target.
+test.x: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test.x
+.PHONY : test.x
+
+# fast build rule for target.
+test.x/fast:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/build
+.PHONY : test.x/fast
+
+#=============================================================================
+# Target rules for targets named gth.x
+
+# Build rule for target.
+gth.x: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gth.x
+.PHONY : gth.x
+
+# fast build rule for target.
+gth.x/fast:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/build
+.PHONY : gth.x/fast
+
 freeparticle.o: freeparticle.f90.o
 
 .PHONY : freeparticle.o
@@ -150,6 +176,117 @@ freeparticle.f90.s:
 	$(MAKE) -f CMakeFiles/free.x.dir/build.make CMakeFiles/free.x.dir/freeparticle.f90.s
 .PHONY : freeparticle.f90.s
 
+gth_potential.o: gth_potential.f90.o
+
+.PHONY : gth_potential.o
+
+# target to build an object file
+gth_potential.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.o
+.PHONY : gth_potential.f90.o
+
+gth_potential.i: gth_potential.f90.i
+
+.PHONY : gth_potential.i
+
+# target to preprocess a source file
+gth_potential.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.i
+.PHONY : gth_potential.f90.i
+
+gth_potential.s: gth_potential.f90.s
+
+.PHONY : gth_potential.s
+
+# target to generate assembly for a file
+gth_potential.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.s
+.PHONY : gth_potential.f90.s
+
+particle_gth.o: particle_gth.f90.o
+
+.PHONY : particle_gth.o
+
+# target to build an object file
+particle_gth.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/particle_gth.f90.o
+.PHONY : particle_gth.f90.o
+
+particle_gth.i: particle_gth.f90.i
+
+.PHONY : particle_gth.i
+
+# target to preprocess a source file
+particle_gth.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/particle_gth.f90.i
+.PHONY : particle_gth.f90.i
+
+particle_gth.s: particle_gth.f90.s
+
+.PHONY : particle_gth.s
+
+# target to generate assembly for a file
+particle_gth.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/particle_gth.f90.s
+.PHONY : particle_gth.f90.s
+
+projectors.o: projectors.f90.o
+
+.PHONY : projectors.o
+
+# target to build an object file
+projectors.f90.o:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.o
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.o
+.PHONY : projectors.f90.o
+
+projectors.i: projectors.f90.i
+
+.PHONY : projectors.i
+
+# target to preprocess a source file
+projectors.f90.i:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.i
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.i
+.PHONY : projectors.f90.i
+
+projectors.s: projectors.f90.s
+
+.PHONY : projectors.s
+
+# target to generate assembly for a file
+projectors.f90.s:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.s
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.s
+.PHONY : projectors.f90.s
+
+test_projectors.o: test_projectors.f90.o
+
+.PHONY : test_projectors.o
+
+# target to build an object file
+test_projectors.f90.o:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/test_projectors.f90.o
+.PHONY : test_projectors.f90.o
+
+test_projectors.i: test_projectors.f90.i
+
+.PHONY : test_projectors.i
+
+# target to preprocess a source file
+test_projectors.f90.i:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/test_projectors.f90.i
+.PHONY : test_projectors.f90.i
+
+test_projectors.s: test_projectors.f90.s
+
+.PHONY : test_projectors.s
+
+# target to generate assembly for a file
+test_projectors.f90.s:
+	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/test_projectors.f90.s
+.PHONY : test_projectors.f90.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -157,11 +294,25 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
 	@echo "... free.x"
+	@echo "... test.x"
+	@echo "... gth.x"
+	@echo "... rebuild_cache"
 	@echo "... freeparticle.o"
 	@echo "... freeparticle.i"
 	@echo "... freeparticle.s"
+	@echo "... gth_potential.o"
+	@echo "... gth_potential.i"
+	@echo "... gth_potential.s"
+	@echo "... particle_gth.o"
+	@echo "... particle_gth.i"
+	@echo "... particle_gth.s"
+	@echo "... projectors.o"
+	@echo "... projectors.i"
+	@echo "... projectors.s"
+	@echo "... test_projectors.o"
+	@echo "... test_projectors.i"
+	@echo "... test_projectors.s"
 .PHONY : help
 
 
