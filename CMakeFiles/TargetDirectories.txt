@@ -1,0 +1,3 @@
+/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/edit_cache.dir
+/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/rebuild_cache.dir
+/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/free.x.dir
