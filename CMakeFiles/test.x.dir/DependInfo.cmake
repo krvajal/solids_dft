@@ -12,6 +12,7 @@ set(CMAKE_Fortran_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_Fortran_TARGET_INCLUDE_PATH
   "/home/miguel/fortran-utils/src"
+  "/usr/local/include"
   )
 
 # Targets to which this target links.
