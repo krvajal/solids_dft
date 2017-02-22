@@ -65,8 +65,9 @@ CMAKE_BINARY_DIR = /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle
 # All Build rule for target.
 CMakeFiles/gth.x.dir/all:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/depend
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/requires
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num= "Built target gth.x"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=3,4,5,6,7,8,9,10 "Built target gth.x"
 .PHONY : CMakeFiles/gth.x.dir/all
 
 # Include target in all.
@@ -76,7 +77,7 @@ all: CMakeFiles/gth.x.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gth.x.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gth.x.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 0
 .PHONY : CMakeFiles/gth.x.dir/rule
@@ -104,7 +105,7 @@ CMakeFiles/testfft.x.dir/all:
 	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/depend
 	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/requires
 	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=6,7,8 "Built target testfft.x"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=14,15,16 "Built target testfft.x"
 .PHONY : CMakeFiles/testfft.x.dir/all
 
 # Include target in all.
@@ -142,7 +143,7 @@ CMakeFiles/test.x.dir/all:
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/depend
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/requires
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=3,4,5 "Built target test.x"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=11,12,13 "Built target test.x"
 .PHONY : CMakeFiles/test.x.dir/all
 
 # Include target in all.

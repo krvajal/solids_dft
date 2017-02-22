@@ -31,7 +31,7 @@ program particle_gth
         ! solve the eigenproblem
         call eigh(hamiltMatrix, energies,C)
         call computeDensity (numGVects, C)
-        call computeVxc()
+        call compute_vxc()
         
         print *,"Energies = ",energies(1:3)
     enddo
@@ -72,7 +72,7 @@ subroutine fillHamiltMatrix(basisDim, KBasisSet, hamiltMatrix)
 
     vxc_aux = CMPLX(vxc_r, kind=dp)
 
-    call fftBackward3D(Nx,Ny,Nz, vxc_aux, vxc_g)
+    call fft_backward_3d(Nx,Ny,Nz, vxc_aux, vxc_g)
     vxc_g = vxc_g/(Nx*Ny*Nz)
 
     hamiltMatrix = 0 !init to zero the hamiltonina matrix
@@ -131,11 +131,11 @@ subroutine computeDensity(N,C)
     do i = 1,numGVects
         C(:,i) = C(:,i)/sum(C(:,i)**2) ! normalize 
         NjR = CMPLX(layoutKIndexForFft(C(:,i)))
-        call fftForward3D(Nx,Ny,Nz,NjR,NjR)        
+        call fft_forward_3d(Nx,Ny,Nz,NjR,NjR)        
         NjR = NjR/sqrt(omega)
         NtotalR = FillingFactor(i)*ABS(NjR)**2  + NtotalR
     enddo
-    call fftBackward3D(Nx,Ny,Nz,NtotalR,NtotalK)        
+    call fft_backward_3d(Nx,Ny,Nz,NtotalR,NtotalK)        
     NtotalK = NtotalK/(Nx*Ny*Nz)
     
 

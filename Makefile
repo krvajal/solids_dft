@@ -162,12 +162,40 @@ free.x/fast:
 	$(MAKE) -f CMakeFiles/free.x.dir/build.make CMakeFiles/free.x.dir/build
 .PHONY : free.x/fast
 
+density.o: density.f90.o
+
+.PHONY : density.o
+
+# target to build an object file
+density.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/density.f90.o
+.PHONY : density.f90.o
+
+density.i: density.f90.i
+
+.PHONY : density.i
+
+# target to preprocess a source file
+density.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/density.f90.i
+.PHONY : density.f90.i
+
+density.s: density.f90.s
+
+.PHONY : density.s
+
+# target to generate assembly for a file
+density.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/density.f90.s
+.PHONY : density.f90.s
+
 fft.o: fft.f90.o
 
 .PHONY : fft.o
 
 # target to build an object file
 fft.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/fft.f90.o
 	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/fft.f90.o
 .PHONY : fft.f90.o
 
@@ -177,6 +205,7 @@ fft.i: fft.f90.i
 
 # target to preprocess a source file
 fft.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/fft.f90.i
 	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/fft.f90.i
 .PHONY : fft.f90.i
 
@@ -186,6 +215,7 @@ fft.s: fft.f90.s
 
 # target to generate assembly for a file
 fft.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/fft.f90.s
 	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/fft.f90.s
 .PHONY : fft.f90.s
 
@@ -216,12 +246,94 @@ freeparticle.f90.s:
 	$(MAKE) -f CMakeFiles/free.x.dir/build.make CMakeFiles/free.x.dir/freeparticle.f90.s
 .PHONY : freeparticle.f90.s
 
+gth_potential.o: gth_potential.f90.o
+
+.PHONY : gth_potential.o
+
+# target to build an object file
+gth_potential.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.o
+.PHONY : gth_potential.f90.o
+
+gth_potential.i: gth_potential.f90.i
+
+.PHONY : gth_potential.i
+
+# target to preprocess a source file
+gth_potential.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.i
+.PHONY : gth_potential.f90.i
+
+gth_potential.s: gth_potential.f90.s
+
+.PHONY : gth_potential.s
+
+# target to generate assembly for a file
+gth_potential.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.s
+.PHONY : gth_potential.f90.s
+
+gvect.o: gvect.f90.o
+
+.PHONY : gvect.o
+
+# target to build an object file
+gvect.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gvect.f90.o
+.PHONY : gvect.f90.o
+
+gvect.i: gvect.f90.i
+
+.PHONY : gvect.i
+
+# target to preprocess a source file
+gvect.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gvect.f90.i
+.PHONY : gvect.f90.i
+
+gvect.s: gvect.f90.s
+
+.PHONY : gvect.s
+
+# target to generate assembly for a file
+gvect.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gvect.f90.s
+.PHONY : gvect.f90.s
+
+main.o: main.f90.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/main.f90.o
+.PHONY : main.f90.o
+
+main.i: main.f90.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/main.f90.i
+.PHONY : main.f90.i
+
+main.s: main.f90.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/main.f90.s
+.PHONY : main.f90.s
+
 projectors.o: projectors.f90.o
 
 .PHONY : projectors.o
 
 # target to build an object file
 projectors.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.o
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.o
 .PHONY : projectors.f90.o
 
@@ -231,6 +343,7 @@ projectors.i: projectors.f90.i
 
 # target to preprocess a source file
 projectors.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.i
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.i
 .PHONY : projectors.f90.i
 
@@ -240,6 +353,7 @@ projectors.s: projectors.f90.s
 
 # target to generate assembly for a file
 projectors.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.s
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.s
 .PHONY : projectors.f90.s
 
@@ -297,6 +411,33 @@ test_projectors.f90.s:
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/test_projectors.f90.s
 .PHONY : test_projectors.f90.s
 
+xc.o: xc.f90.o
+
+.PHONY : xc.o
+
+# target to build an object file
+xc.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/xc.f90.o
+.PHONY : xc.f90.o
+
+xc.i: xc.f90.i
+
+.PHONY : xc.i
+
+# target to preprocess a source file
+xc.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/xc.f90.i
+.PHONY : xc.f90.i
+
+xc.s: xc.f90.s
+
+.PHONY : xc.s
+
+# target to generate assembly for a file
+xc.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/xc.f90.s
+.PHONY : xc.f90.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -309,12 +450,24 @@ help:
 	@echo "... testfft.x"
 	@echo "... test.x"
 	@echo "... free.x"
+	@echo "... density.o"
+	@echo "... density.i"
+	@echo "... density.s"
 	@echo "... fft.o"
 	@echo "... fft.i"
 	@echo "... fft.s"
 	@echo "... freeparticle.o"
 	@echo "... freeparticle.i"
 	@echo "... freeparticle.s"
+	@echo "... gth_potential.o"
+	@echo "... gth_potential.i"
+	@echo "... gth_potential.s"
+	@echo "... gvect.o"
+	@echo "... gvect.i"
+	@echo "... gvect.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... projectors.o"
 	@echo "... projectors.i"
 	@echo "... projectors.s"
@@ -324,6 +477,9 @@ help:
 	@echo "... test_projectors.o"
 	@echo "... test_projectors.i"
 	@echo "... test_projectors.s"
+	@echo "... xc.o"
+	@echo "... xc.i"
+	@echo "... xc.s"
 .PHONY : help
 
 

@@ -6,11 +6,18 @@ project(freeparticle)
 
 
 
-set(SRC_FILES freeparticle.f90)
+
+
 
 include_directories(~/fortran-utils/src)
 include_directories(/usr/local/include)
 link_directories(~/fortran-utils/src)
+
+add_definitions(-Wno-implicit-interface)
+add_definitions(-fcheck=all)
+
+set(SRC_FILES freeparticle.f90)
+
 link_directories(/usr/local/lib)
 add_executable(free.x ${SRC_FILES})
 
@@ -23,10 +30,12 @@ add_executable(test.x projectors.f90 test_projectors.f90)
 target_link_libraries(test.x fortran_utils)
 target_link_libraries(test.x lapack)
 
-# particle with gth
-add_executable(gth.x particle_gth.f90 gth_potential.f90 projectors.f90 gvect.f90 xc.f90 density.f90)
+
+add_executable(gth.x main.f90 gth_potential.f90 projectors.f90 gvect.f90 fft.f90 density.f90 xc.f90)
+
 target_link_libraries(gth.x fortran_utils)
 target_link_libraries(gth.x lapack)
+target_link_libraries(gth.x fftw3)
 
 add_executable(testfft.x fft.f90 test_fft.f90 )
 target_link_libraries(testfft.x fftw3)

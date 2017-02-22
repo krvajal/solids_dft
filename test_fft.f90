@@ -1,6 +1,7 @@
 program test_fft
     use fft
     use types
+
     use constants
     implicit none
     complex(C_DOUBLE_COMPLEX) :: in(2,3,2), out(2,3,2)
@@ -17,4 +18,5 @@ program test_fft
     result =  2.0_dp - exp( (0,1)* 2*pi/3.0) + exp((0,1)*4*pi/3);
     call fft_backward_3d(2,3,2,in,out)
     print *, out(1,2,1), result ! ok
+
 end program test_fft
