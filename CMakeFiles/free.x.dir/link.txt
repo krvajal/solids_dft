@@ -1,1 +1,1 @@
-/usr/bin/f95     CMakeFiles/free.x.dir/freeparticle.f90.o  -o free.x  -L/home/miguel/fortran-utils/src  -L/usr/local/lib  -lfortran_utils -llapack -Wl,-rpath,/home/miguel/fortran-utils/src:/usr/local/lib 
+/usr/local/bin/gfortran     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk CMakeFiles/free.x.dir/freeparticle.f90.o  -o free.x  -L/Users/carvajal/fortran-utils/src  -L/usr/local/lib  -lfortran_utils -llapack -Wl,-rpath,/Users/carvajal/fortran-utils/src -Wl,-rpath,/usr/local/lib 

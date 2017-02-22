@@ -1,12 +1,11 @@
 module gvect
     use types
-    use constants
-    use density
+    use constants    
 implicit none
-
 private 
-public gVects, numGVects, ggen, ni,nj,nk, layoutKIndexForFft, Nx, Ny, Nz
+public gVects, numGVects, ggen, ni,nj,nk, layoutKIndexForFft, Nx,Ny,Nz
 
+integer :: Nx, Ny, Nz
 real(dp),allocatable :: gVects(:,:)
 integer :: numGVects  = 0 
 integer :: ni,nj,nk
@@ -65,7 +64,7 @@ function layoutKIndexForFft(C) result(retval)
     integer :: toI,toJ, toK
     allocate(retval(Nx,Ny,Nz))
     retval = 0.0 !init to zero
-    
+
     do i = 1, numGVects
          toI = gVects(1,i)
          if(toI < 1)    toI = toI + Nx

@@ -22,11 +22,9 @@ program particle_gth
     omega = length**3
     
     kLength  = 2 * pi/length
-    ! simple case with 1/2Kmax^2  = 1.3
-    call ggen(length, ecut)
-    call init_density(Nx,Ny,Nz)
-    call init_xc()
-    
+
+    call init_system()
+  
     do l = 1, 10
 
         call fillHamiltMatrix(numGVects, gVects, hamiltMatrix)
@@ -107,8 +105,8 @@ subroutine fillHamiltMatrix(basisDim, KBasisSet, hamiltMatrix)
             ! add hartree potential
             vhartee = 0
         
-                vhartee = NtotalK(deltaG(1),deltaG(2),deltaG(3))*length*length/pi
-                vhartee = vhartee / sum((KBasisSet(:,i) - KBasisSet(:,j))**2)
+            vhartee = NtotalK(deltaG(1),deltaG(2),deltaG(3))*length*length/pi
+            vhartee = vhartee / sum((KBasisSet(:,i) - KBasisSet(:,j))**2)
             
             hamiltMatrix(i,j) = hamiltMatrix(i,j)  + vhartee
             ! upper part of matrix
@@ -130,13 +128,12 @@ subroutine computeDensity(N,C)
     allocate(NjR(Nx,Ny,Nz))  
     NtotalR = 0.0_dp
 
-    do i = 1,1
+    do i = 1,numGVects
         C(:,i) = C(:,i)/sum(C(:,i)**2) ! normalize 
         NjR = CMPLX(layoutKIndexForFft(C(:,i)))
         call fftForward3D(Nx,Ny,Nz,NjR,NjR)        
         NjR = NjR/sqrt(omega)
-        NtotalR = ABS(NjR)**2  + NtotalR
-
+        NtotalR = FillingFactor(i)*ABS(NjR)**2  + NtotalR
     enddo
     call fftBackward3D(Nx,Ny,Nz,NtotalR,NtotalK)        
     NtotalK = NtotalK/(Nx*Ny*Nz)
@@ -144,4 +141,13 @@ subroutine computeDensity(N,C)
 
 end subroutine computeDensity
     
+    subroutine init_system()
+
+        !TODO: read params from file 
+        call ggen(length, ecut)
+        call init_density(Nx,Ny,Nz,numGVects)
+        FillingFactor(1) = 1
+        call init_xc()
+    
+    end subroutine init_system
 end program particle_gth

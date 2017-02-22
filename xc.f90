@@ -26,12 +26,14 @@ contains
 
 subroutine init_xc()
 
-        allocate(exc(Nx,Ny,Nz))
-        allocate(num(Nx,Ny,Nz))
-        allocate(den(Nx,Ny,Nz))
-        allocate(rs(Nx,Ny,Nz))
-        allocate(vxc_r(Nx,Ny,Nz))
+    allocate(exc(Nx,Ny,Nz))
+    allocate(num(Nx,Ny,Nz))
+    allocate(den(Nx,Ny,Nz))
+    allocate(rs(Nx,Ny,Nz))
+    allocate(vxc_r(Nx,Ny,Nz))
+
 end subroutine init_xc
+
 ! compute the exc using the GTH 
 ! parametrization of of the pseudopotential
 ! of Perdew and Wang
@@ -48,6 +50,8 @@ subroutine compute_exc()
     exc = - Num/Den
 end subroutine compute_exc
 
+! compute the xc potential of pw parametrization
+! vxc = exc + n * d exc /dn
 subroutine computeVxc()
     integer :: i,j   
 
@@ -68,8 +72,7 @@ subroutine computeVxc()
     enddo
     Num = Num * (b(1) + b(2)*2*rs + b(3)*3 * rs**2 + b(4)*4 * rs**3)
     vxc_r = vxc_r +  Num/(Den*Den)
-    vxc_r = vxc_r * NtotalR + exc
-    ! once it is compute in the real space, compute in the reciprocal space
+    vxc_r = vxc_r * rs/3 + exc
 
 
 end subroutine computeVxc

@@ -9,7 +9,7 @@ include 'fftw3.f03'
 
 contains
 
-subroutine fftForward3D(Nx,Ny,Nz,in,out)
+subroutine fft_forward_3d(Nx,Ny,Nz,in,out)
     integer,intent(in) :: Nx,Ny,Nz 
     complex(C_DOUBLE_COMPLEX),intent(inout) :: in(:,:,:)
     complex(C_DOUBLE_COMPLEX),intent(out) :: out(:,:,:)
@@ -19,9 +19,9 @@ subroutine fftForward3D(Nx,Ny,Nz,in,out)
     call fftw_execute_dft(plan,in,out)
     call fftw_destroy_plan(plan)
 
-end subroutine fftForward3D
+end subroutine fft_forward_3d
 
-subroutine fftBackward3D(Nx,Ny,Nz,in,out)
+subroutine fft_backward_3d(Nx,Ny,Nz,in,out)
     integer,intent(in) :: Nx,Ny,Nz
     complex(C_DOUBLE_COMPLEX),intent(inout) :: in(:,:,:)
     complex(C_DOUBLE_COMPLEX),intent(out) :: out(:,:,:)
@@ -31,6 +31,6 @@ subroutine fftBackward3D(Nx,Ny,Nz,in,out)
     call fftw_execute_dft(plan,in,out)
     call fftw_destroy_plan(plan)
 
-end subroutine fftBackward3D
+end subroutine fft_backward_3d
 
 end module fft
