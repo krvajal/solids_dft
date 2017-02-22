@@ -4,14 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_Fortran
-  "/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/projectors.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/test.x.dir/projectors.f90.o"
-  "/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/test_projectors.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/test.x.dir/test_projectors.f90.o"
+  "/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/projectors.f90" "/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/test.x.dir/projectors.f90.o"
+  "/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/test_projectors.f90" "/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/test.x.dir/test_projectors.f90.o"
   )
 set(CMAKE_Fortran_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_Fortran_TARGET_INCLUDE_PATH
-  "/home/miguel/fortran-utils/src"
+  "/Users/carvajal/fortran-utils/src"
+  "/usr/local/include"
   )
 
 # Targets to which this target links.

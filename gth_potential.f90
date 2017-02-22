@@ -5,6 +5,8 @@ module gth_potential
 
     private 
     public gthPotential, GthPotParams
+
+    
     type :: GthPotParams
         real(dp) :: chi
         real(dp) :: c1
@@ -45,7 +47,5 @@ real(dp) function gthPotLocalTerm(params, k) result(retval)
     retval = retval * exp(-0.5 * (k * params%chi)**2)
     retval = retval * (params%c1 + params%c2 * (3 - (k*params%chi)**2))
 end function gthPotLocalTerm
-
-
 
 end module gth_potential

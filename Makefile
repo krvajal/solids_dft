@@ -39,27 +39,27 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.5.0/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/Cellar/cmake/3.5.0/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle
+CMAKE_SOURCE_DIR = /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle
+CMAKE_BINARY_DIR = /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/local/Cellar/cmake/3.5.0/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -70,7 +70,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/Cellar/cmake/3.5.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named free.x
+# Target rules for targets named gth.x
 
 # Build rule for target.
-free.x: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 free.x
-.PHONY : free.x
+gth.x: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gth.x
+.PHONY : gth.x
 
 # fast build rule for target.
-free.x/fast:
-	$(MAKE) -f CMakeFiles/free.x.dir/build.make CMakeFiles/free.x.dir/build
-.PHONY : free.x/fast
+gth.x/fast:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/build
+.PHONY : gth.x/fast
+
+#=============================================================================
+# Target rules for targets named testfft.x
+
+# Build rule for target.
+testfft.x: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 testfft.x
+.PHONY : testfft.x
+
+# fast build rule for target.
+testfft.x/fast:
+	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/build
+.PHONY : testfft.x/fast
 
 #=============================================================================
 # Target rules for targets named test.x
@@ -137,17 +150,44 @@ test.x/fast:
 .PHONY : test.x/fast
 
 #=============================================================================
-# Target rules for targets named gth.x
+# Target rules for targets named free.x
 
 # Build rule for target.
-gth.x: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gth.x
-.PHONY : gth.x
+free.x: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 free.x
+.PHONY : free.x
 
 # fast build rule for target.
-gth.x/fast:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/build
-.PHONY : gth.x/fast
+free.x/fast:
+	$(MAKE) -f CMakeFiles/free.x.dir/build.make CMakeFiles/free.x.dir/build
+.PHONY : free.x/fast
+
+fft.o: fft.f90.o
+
+.PHONY : fft.o
+
+# target to build an object file
+fft.f90.o:
+	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/fft.f90.o
+.PHONY : fft.f90.o
+
+fft.i: fft.f90.i
+
+.PHONY : fft.i
+
+# target to preprocess a source file
+fft.f90.i:
+	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/fft.f90.i
+.PHONY : fft.f90.i
+
+fft.s: fft.f90.s
+
+.PHONY : fft.s
+
+# target to generate assembly for a file
+fft.f90.s:
+	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/fft.f90.s
+.PHONY : fft.f90.s
 
 freeparticle.o: freeparticle.f90.o
 
@@ -176,60 +216,6 @@ freeparticle.f90.s:
 	$(MAKE) -f CMakeFiles/free.x.dir/build.make CMakeFiles/free.x.dir/freeparticle.f90.s
 .PHONY : freeparticle.f90.s
 
-gth_potential.o: gth_potential.f90.o
-
-.PHONY : gth_potential.o
-
-# target to build an object file
-gth_potential.f90.o:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.o
-.PHONY : gth_potential.f90.o
-
-gth_potential.i: gth_potential.f90.i
-
-.PHONY : gth_potential.i
-
-# target to preprocess a source file
-gth_potential.f90.i:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.i
-.PHONY : gth_potential.f90.i
-
-gth_potential.s: gth_potential.f90.s
-
-.PHONY : gth_potential.s
-
-# target to generate assembly for a file
-gth_potential.f90.s:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.s
-.PHONY : gth_potential.f90.s
-
-particle_gth.o: particle_gth.f90.o
-
-.PHONY : particle_gth.o
-
-# target to build an object file
-particle_gth.f90.o:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/particle_gth.f90.o
-.PHONY : particle_gth.f90.o
-
-particle_gth.i: particle_gth.f90.i
-
-.PHONY : particle_gth.i
-
-# target to preprocess a source file
-particle_gth.f90.i:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/particle_gth.f90.i
-.PHONY : particle_gth.f90.i
-
-particle_gth.s: particle_gth.f90.s
-
-.PHONY : particle_gth.s
-
-# target to generate assembly for a file
-particle_gth.f90.s:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/particle_gth.f90.s
-.PHONY : particle_gth.f90.s
-
 projectors.o: projectors.f90.o
 
 .PHONY : projectors.o
@@ -237,7 +223,6 @@ projectors.o: projectors.f90.o
 # target to build an object file
 projectors.f90.o:
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.o
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.o
 .PHONY : projectors.f90.o
 
 projectors.i: projectors.f90.i
@@ -247,7 +232,6 @@ projectors.i: projectors.f90.i
 # target to preprocess a source file
 projectors.f90.i:
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.i
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.i
 .PHONY : projectors.f90.i
 
 projectors.s: projectors.f90.s
@@ -257,8 +241,34 @@ projectors.s: projectors.f90.s
 # target to generate assembly for a file
 projectors.f90.s:
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.s
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.s
 .PHONY : projectors.f90.s
+
+test_fft.o: test_fft.f90.o
+
+.PHONY : test_fft.o
+
+# target to build an object file
+test_fft.f90.o:
+	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/test_fft.f90.o
+.PHONY : test_fft.f90.o
+
+test_fft.i: test_fft.f90.i
+
+.PHONY : test_fft.i
+
+# target to preprocess a source file
+test_fft.f90.i:
+	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/test_fft.f90.i
+.PHONY : test_fft.f90.i
+
+test_fft.s: test_fft.f90.s
+
+.PHONY : test_fft.s
+
+# target to generate assembly for a file
+test_fft.f90.s:
+	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/test_fft.f90.s
+.PHONY : test_fft.f90.s
 
 test_projectors.o: test_projectors.f90.o
 
@@ -294,22 +304,23 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... free.x"
-	@echo "... test.x"
 	@echo "... gth.x"
 	@echo "... rebuild_cache"
+	@echo "... testfft.x"
+	@echo "... test.x"
+	@echo "... free.x"
+	@echo "... fft.o"
+	@echo "... fft.i"
+	@echo "... fft.s"
 	@echo "... freeparticle.o"
 	@echo "... freeparticle.i"
 	@echo "... freeparticle.s"
-	@echo "... gth_potential.o"
-	@echo "... gth_potential.i"
-	@echo "... gth_potential.s"
-	@echo "... particle_gth.o"
-	@echo "... particle_gth.i"
-	@echo "... particle_gth.s"
 	@echo "... projectors.o"
 	@echo "... projectors.i"
 	@echo "... projectors.s"
+	@echo "... test_fft.o"
+	@echo "... test_fft.i"
+	@echo "... test_fft.s"
 	@echo "... test_projectors.o"
 	@echo "... test_projectors.i"
 	@echo "... test_projectors.s"

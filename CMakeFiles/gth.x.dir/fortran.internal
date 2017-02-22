@@ -1,4 +1,6 @@
 # The fortran modules provided by this target.
 provides
  gth_potential
+ gvect
  projectors
+ xc
