@@ -9,7 +9,7 @@ private
 public exc, compute_exc,init_xc, vxc_r, compute_vxc
 real(dp),allocatable :: exc(:,:,:)
 
-real(dp),allocatable :: num(:,:,:), dnum(:,:,:),den(:,:,:),dden(:,:,:)
+real(dp),allocatable :: num1(:,:,:), num2(:,:,:),den(:,:,:)
 
 real(dp),allocatable :: vxc_r(:,:,:) !   xc potential in real space
 real(dp),allocatable :: exc_(:,:,:)
@@ -30,12 +30,10 @@ subroutine init_xc()
 
     allocate(exc(0:Nx-1,0:Ny-1,0:Nz-1))
 
-    allocate(num(0:Nx-1,0:Ny-1,0:Nz-1))
-    allocate(dnum(0:Nx-1,0:Ny-1,0:Nz-1))
+    allocate(num1(0:Nx-1,0:Ny-1,0:Nz-1))
+    allocate(num2(0:Nx-1,0:Ny-1,0:Nz-1))
 
     allocate(den(0:Nx-1,0:Ny-1,0:Nz-1))
-
-    allocate(dden(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(rs(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(vxc_r(0:Nx-1,0:Ny-1,0:Nz-1))
 
@@ -49,13 +47,14 @@ subroutine compute_exc()
     
     rs = (3.0/(4.0*pi*density_r))**(1./3) 
 
-    num = 0
+    num1 = 0
     den = 0
     do i = 1,4
-        num = num + a(i) * rs**(i-1)
+        num1 = num1 + a(i) * rs**(i-1)
         den =  den + b(i) * rs**i
     enddo
-    exc = - num/den
+    exc = - num1/den
+
 end subroutine compute_exc
 
 ! compute the xc potential of pw parametrization
@@ -67,33 +66,21 @@ subroutine compute_vxc()
 
     call compute_exc()
     
-    rs = (3.0/(4.0_dp*pi*density_r))**(1./3) 
+    rs = (3.0/(4.*pi*density_r))**(1./3) 
     
-    num = 0
-    dnum = 0
+    num1 = 0
+    num2 = 0
     den = 0
     do i = 1,4
         den =  den + b(i) * rs**i
-        num = num + a(i) * (i-1)*rs**(i-2)
-        dnum = dnum + b(i) * i * rs**(i-1)
+        num1 = num1 + a(i) * (i-1)*rs**(i-2)
+        num2 = num2 + b(i) * i * rs**(i-1)
     enddo
-      
-    num = 0
-    dnum = 0
-    den = 0
-    dden = 0
-    do i = 1, 4
-        num = num + a(i)*Rs**(i-1)
-        dnum = dnum + a(i)*(i-1)*Rs**(i-2)
-        den = den + b(i)*Rs**(i+3)
-        dden = dden + b(i)*(i+3)*Rs**(i+2)
-    enddo
-    vxc_r = (den*dnum-num*dden)/den**2*Rs**4/3.0_dp
-  
-    ! dvxc_drs = - (num + dnum * exc)/den
+
+    dvxc_drs = - (num1 + num2 * exc)/den
     
-    ! vxc_r = exc - 1.0_dp/3.0_dp * rs * dvxc_drs
-    ! vxc_r =  -dvxc_drs*rs/3
+    vxc_r = exc - 1/3.0_dp * rs * dvxc_drs
+
 end subroutine compute_vxc
 
 end module xc

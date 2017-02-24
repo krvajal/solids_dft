@@ -4,6 +4,10 @@ FILE(REMOVE
   "DENSITY.mod"
   "CMakeFiles/gth.x.dir/density.mod.stamp"
 
+  "energy.mod"
+  "ENERGY.mod"
+  "CMakeFiles/gth.x.dir/energy.mod.stamp"
+
   "fft.mod"
   "FFT.mod"
   "CMakeFiles/gth.x.dir/fft.mod.stamp"

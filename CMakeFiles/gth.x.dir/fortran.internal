@@ -1,6 +1,7 @@
 # The fortran modules provided by this target.
 provides
  density
+ energy
  fft
  gth_potential
  gvect

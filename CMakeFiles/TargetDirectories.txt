@@ -1,6 +1,3 @@
-/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/edit_cache.dir
-/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/gth.x.dir
-/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/rebuild_cache.dir
-/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/testfft.x.dir
-/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/test.x.dir
-/Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/free.x.dir
+/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/edit_cache.dir
+/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/rebuild_cache.dir
+/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir

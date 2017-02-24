@@ -6,7 +6,7 @@ program freeparticle
     integer,parameter :: basisDim =  7
     real(dp) :: KSet(basisDim, 3)
     integer :: i, j, k
-    real(dp) :: length = 5.0_dp
+    real(dp) :: length = 50.0_dp
     real(dp) :: kLength
      real(dp):: hamiltMatrix(basisDim, basisDim)
      real(dp):: energies (basisDim)

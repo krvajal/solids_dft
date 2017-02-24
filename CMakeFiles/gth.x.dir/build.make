@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle
+CMAKE_SOURCE_DIR = /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle
+CMAKE_BINARY_DIR = /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente
 
 # Include any dependencies generated for this target.
 include CMakeFiles/gth.x.dir/depend.make
@@ -57,42 +57,42 @@ include CMakeFiles/gth.x.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/gth.x.dir/flags.make
 
-CMakeFiles/gth.x.dir/particle_gth.f90.o: CMakeFiles/gth.x.dir/flags.make
-CMakeFiles/gth.x.dir/particle_gth.f90.o: particle_gth.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object CMakeFiles/gth.x.dir/particle_gth.f90.o"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/particle_gth.f90 -o CMakeFiles/gth.x.dir/particle_gth.f90.o
+CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/flags.make
+CMakeFiles/gth.x.dir/main.f90.o: main.f90
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object CMakeFiles/gth.x.dir/main.f90.o"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/main.f90 -o CMakeFiles/gth.x.dir/main.f90.o
 
-CMakeFiles/gth.x.dir/particle_gth.f90.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/particle_gth.f90.i"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/particle_gth.f90 > CMakeFiles/gth.x.dir/particle_gth.f90.i
+CMakeFiles/gth.x.dir/main.f90.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/main.f90.i"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/main.f90 > CMakeFiles/gth.x.dir/main.f90.i
 
-CMakeFiles/gth.x.dir/particle_gth.f90.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/particle_gth.f90.s"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/particle_gth.f90 -o CMakeFiles/gth.x.dir/particle_gth.f90.s
+CMakeFiles/gth.x.dir/main.f90.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/main.f90.s"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/main.f90 -o CMakeFiles/gth.x.dir/main.f90.s
 
-CMakeFiles/gth.x.dir/particle_gth.f90.o.requires:
+CMakeFiles/gth.x.dir/main.f90.o.requires:
 
-.PHONY : CMakeFiles/gth.x.dir/particle_gth.f90.o.requires
+.PHONY : CMakeFiles/gth.x.dir/main.f90.o.requires
 
-CMakeFiles/gth.x.dir/particle_gth.f90.o.provides: CMakeFiles/gth.x.dir/particle_gth.f90.o.requires
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/particle_gth.f90.o.provides.build
-.PHONY : CMakeFiles/gth.x.dir/particle_gth.f90.o.provides
+CMakeFiles/gth.x.dir/main.f90.o.provides: CMakeFiles/gth.x.dir/main.f90.o.requires
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/main.f90.o.provides.build
+.PHONY : CMakeFiles/gth.x.dir/main.f90.o.provides
 
-CMakeFiles/gth.x.dir/particle_gth.f90.o.provides.build: CMakeFiles/gth.x.dir/particle_gth.f90.o
+CMakeFiles/gth.x.dir/main.f90.o.provides.build: CMakeFiles/gth.x.dir/main.f90.o
 
 
 CMakeFiles/gth.x.dir/gth_potential.f90.o: CMakeFiles/gth.x.dir/flags.make
 CMakeFiles/gth.x.dir/gth_potential.f90.o: gth_potential.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building Fortran object CMakeFiles/gth.x.dir/gth_potential.f90.o"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/gth_potential.f90 -o CMakeFiles/gth.x.dir/gth_potential.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building Fortran object CMakeFiles/gth.x.dir/gth_potential.f90.o"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/gth_potential.f90 -o CMakeFiles/gth.x.dir/gth_potential.f90.o
 
 CMakeFiles/gth.x.dir/gth_potential.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/gth_potential.f90.i"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/gth_potential.f90 > CMakeFiles/gth.x.dir/gth_potential.f90.i
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/gth_potential.f90 > CMakeFiles/gth.x.dir/gth_potential.f90.i
 
 CMakeFiles/gth.x.dir/gth_potential.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/gth_potential.f90.s"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/gth_potential.f90 -o CMakeFiles/gth.x.dir/gth_potential.f90.s
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/gth_potential.f90 -o CMakeFiles/gth.x.dir/gth_potential.f90.s
 
 CMakeFiles/gth.x.dir/gth_potential.f90.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/gth.x.dir/gth_potential.f90.o.provides.build: CMakeFiles/gth.x.dir/gt
 
 CMakeFiles/gth.x.dir/projectors.f90.o: CMakeFiles/gth.x.dir/flags.make
 CMakeFiles/gth.x.dir/projectors.f90.o: projectors.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building Fortran object CMakeFiles/gth.x.dir/projectors.f90.o"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/projectors.f90 -o CMakeFiles/gth.x.dir/projectors.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building Fortran object CMakeFiles/gth.x.dir/projectors.f90.o"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/projectors.f90 -o CMakeFiles/gth.x.dir/projectors.f90.o
 
 CMakeFiles/gth.x.dir/projectors.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/projectors.f90.i"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/projectors.f90 > CMakeFiles/gth.x.dir/projectors.f90.i
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/projectors.f90 > CMakeFiles/gth.x.dir/projectors.f90.i
 
 CMakeFiles/gth.x.dir/projectors.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/projectors.f90.s"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/projectors.f90 -o CMakeFiles/gth.x.dir/projectors.f90.s
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/projectors.f90 -o CMakeFiles/gth.x.dir/projectors.f90.s
 
 CMakeFiles/gth.x.dir/projectors.f90.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/gth.x.dir/projectors.f90.o.provides.build: CMakeFiles/gth.x.dir/proje
 
 CMakeFiles/gth.x.dir/gvect.f90.o: CMakeFiles/gth.x.dir/flags.make
 CMakeFiles/gth.x.dir/gvect.f90.o: gvect.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building Fortran object CMakeFiles/gth.x.dir/gvect.f90.o"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/gvect.f90 -o CMakeFiles/gth.x.dir/gvect.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building Fortran object CMakeFiles/gth.x.dir/gvect.f90.o"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/gvect.f90 -o CMakeFiles/gth.x.dir/gvect.f90.o
 
 CMakeFiles/gth.x.dir/gvect.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/gvect.f90.i"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/gvect.f90 > CMakeFiles/gth.x.dir/gvect.f90.i
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/gvect.f90 > CMakeFiles/gth.x.dir/gvect.f90.i
 
 CMakeFiles/gth.x.dir/gvect.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/gvect.f90.s"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/gvect.f90 -o CMakeFiles/gth.x.dir/gvect.f90.s
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/gvect.f90 -o CMakeFiles/gth.x.dir/gvect.f90.s
 
 CMakeFiles/gth.x.dir/gvect.f90.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/gth.x.dir/gvect.f90.o.provides.build: CMakeFiles/gth.x.dir/gvect.f90.
 
 CMakeFiles/gth.x.dir/fft.f90.o: CMakeFiles/gth.x.dir/flags.make
 CMakeFiles/gth.x.dir/fft.f90.o: fft.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building Fortran object CMakeFiles/gth.x.dir/fft.f90.o"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/fft.f90 -o CMakeFiles/gth.x.dir/fft.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building Fortran object CMakeFiles/gth.x.dir/fft.f90.o"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/fft.f90 -o CMakeFiles/gth.x.dir/fft.f90.o
 
 CMakeFiles/gth.x.dir/fft.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/fft.f90.i"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/fft.f90 > CMakeFiles/gth.x.dir/fft.f90.i
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/fft.f90 > CMakeFiles/gth.x.dir/fft.f90.i
 
 CMakeFiles/gth.x.dir/fft.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/fft.f90.s"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/fft.f90 -o CMakeFiles/gth.x.dir/fft.f90.s
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/fft.f90 -o CMakeFiles/gth.x.dir/fft.f90.s
 
 CMakeFiles/gth.x.dir/fft.f90.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/gth.x.dir/fft.f90.o.provides.build: CMakeFiles/gth.x.dir/fft.f90.o
 
 CMakeFiles/gth.x.dir/density.f90.o: CMakeFiles/gth.x.dir/flags.make
 CMakeFiles/gth.x.dir/density.f90.o: density.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building Fortran object CMakeFiles/gth.x.dir/density.f90.o"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/density.f90 -o CMakeFiles/gth.x.dir/density.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building Fortran object CMakeFiles/gth.x.dir/density.f90.o"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/density.f90 -o CMakeFiles/gth.x.dir/density.f90.o
 
 CMakeFiles/gth.x.dir/density.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/density.f90.i"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/density.f90 > CMakeFiles/gth.x.dir/density.f90.i
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/density.f90 > CMakeFiles/gth.x.dir/density.f90.i
 
 CMakeFiles/gth.x.dir/density.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/density.f90.s"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/density.f90 -o CMakeFiles/gth.x.dir/density.f90.s
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/density.f90 -o CMakeFiles/gth.x.dir/density.f90.s
 
 CMakeFiles/gth.x.dir/density.f90.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/gth.x.dir/density.f90.o.provides.build: CMakeFiles/gth.x.dir/density.
 
 CMakeFiles/gth.x.dir/xc.f90.o: CMakeFiles/gth.x.dir/flags.make
 CMakeFiles/gth.x.dir/xc.f90.o: xc.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building Fortran object CMakeFiles/gth.x.dir/xc.f90.o"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/xc.f90 -o CMakeFiles/gth.x.dir/xc.f90.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building Fortran object CMakeFiles/gth.x.dir/xc.f90.o"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/xc.f90 -o CMakeFiles/gth.x.dir/xc.f90.o
 
 CMakeFiles/gth.x.dir/xc.f90.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/xc.f90.i"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/xc.f90 > CMakeFiles/gth.x.dir/xc.f90.i
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/xc.f90 > CMakeFiles/gth.x.dir/xc.f90.i
 
 CMakeFiles/gth.x.dir/xc.f90.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/xc.f90.s"
-	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/xc.f90 -o CMakeFiles/gth.x.dir/xc.f90.s
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/xc.f90 -o CMakeFiles/gth.x.dir/xc.f90.s
 
 CMakeFiles/gth.x.dir/xc.f90.o.requires:
 
@@ -225,29 +225,55 @@ CMakeFiles/gth.x.dir/xc.f90.o.provides: CMakeFiles/gth.x.dir/xc.f90.o.requires
 CMakeFiles/gth.x.dir/xc.f90.o.provides.build: CMakeFiles/gth.x.dir/xc.f90.o
 
 
+CMakeFiles/gth.x.dir/energy.f90.o: CMakeFiles/gth.x.dir/flags.make
+CMakeFiles/gth.x.dir/energy.f90.o: energy.f90
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building Fortran object CMakeFiles/gth.x.dir/energy.f90.o"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/energy.f90 -o CMakeFiles/gth.x.dir/energy.f90.o
+
+CMakeFiles/gth.x.dir/energy.f90.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing Fortran source to CMakeFiles/gth.x.dir/energy.f90.i"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/energy.f90 > CMakeFiles/gth.x.dir/energy.f90.i
+
+CMakeFiles/gth.x.dir/energy.f90.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling Fortran source to assembly CMakeFiles/gth.x.dir/energy.f90.s"
+	/usr/bin/f95  $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/energy.f90 -o CMakeFiles/gth.x.dir/energy.f90.s
+
+CMakeFiles/gth.x.dir/energy.f90.o.requires:
+
+.PHONY : CMakeFiles/gth.x.dir/energy.f90.o.requires
+
+CMakeFiles/gth.x.dir/energy.f90.o.provides: CMakeFiles/gth.x.dir/energy.f90.o.requires
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/energy.f90.o.provides.build
+.PHONY : CMakeFiles/gth.x.dir/energy.f90.o.provides
+
+CMakeFiles/gth.x.dir/energy.f90.o.provides.build: CMakeFiles/gth.x.dir/energy.f90.o
+
+
 # Object files for target gth.x
 gth_x_OBJECTS = \
-"CMakeFiles/gth.x.dir/particle_gth.f90.o" \
+"CMakeFiles/gth.x.dir/main.f90.o" \
 "CMakeFiles/gth.x.dir/gth_potential.f90.o" \
 "CMakeFiles/gth.x.dir/projectors.f90.o" \
 "CMakeFiles/gth.x.dir/gvect.f90.o" \
 "CMakeFiles/gth.x.dir/fft.f90.o" \
 "CMakeFiles/gth.x.dir/density.f90.o" \
-"CMakeFiles/gth.x.dir/xc.f90.o"
+"CMakeFiles/gth.x.dir/xc.f90.o" \
+"CMakeFiles/gth.x.dir/energy.f90.o"
 
 # External object files for target gth.x
 gth_x_EXTERNAL_OBJECTS =
 
-gth.x: CMakeFiles/gth.x.dir/particle_gth.f90.o
+gth.x: CMakeFiles/gth.x.dir/main.f90.o
 gth.x: CMakeFiles/gth.x.dir/gth_potential.f90.o
 gth.x: CMakeFiles/gth.x.dir/projectors.f90.o
 gth.x: CMakeFiles/gth.x.dir/gvect.f90.o
 gth.x: CMakeFiles/gth.x.dir/fft.f90.o
 gth.x: CMakeFiles/gth.x.dir/density.f90.o
 gth.x: CMakeFiles/gth.x.dir/xc.f90.o
+gth.x: CMakeFiles/gth.x.dir/energy.f90.o
 gth.x: CMakeFiles/gth.x.dir/build.make
 gth.x: CMakeFiles/gth.x.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking Fortran executable gth.x"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking Fortran executable gth.x"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gth.x.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -255,13 +281,14 @@ CMakeFiles/gth.x.dir/build: gth.x
 
 .PHONY : CMakeFiles/gth.x.dir/build
 
-CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/particle_gth.f90.o.requires
+CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/main.f90.o.requires
 CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/gth_potential.f90.o.requires
 CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/projectors.f90.o.requires
 CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/gvect.f90.o.requires
 CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/fft.f90.o.requires
 CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/density.f90.o.requires
 CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/xc.f90.o.requires
+CMakeFiles/gth.x.dir/requires: CMakeFiles/gth.x.dir/energy.f90.o.requires
 
 .PHONY : CMakeFiles/gth.x.dir/requires
 
@@ -270,6 +297,6 @@ CMakeFiles/gth.x.dir/clean:
 .PHONY : CMakeFiles/gth.x.dir/clean
 
 CMakeFiles/gth.x.dir/depend:
-	cd /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle /home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/gth.x.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/gth.x.dir/depend
 

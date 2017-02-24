@@ -11,26 +11,23 @@ contains
 
 subroutine fft_forward_3d(Nx,Ny,Nz,in,out)
     integer,intent(in) :: Nx,Ny,Nz 
-    complex(C_DOUBLE_COMPLEX),intent(inout) :: in(:,:,:)
-    complex(C_DOUBLE_COMPLEX),intent(out) :: out(:,:,:)
+    complex(C_DOUBLE_COMPLEX),intent(inout) :: in(0:Nx-1,0:Ny-1,0:Nz-1)
+    complex(C_DOUBLE_COMPLEX),intent(out) :: out(0:Nx-1,0:Ny-1,0:Nz-1)
     type(C_PTR) :: plan
      
     plan = fftw_plan_dft_3d(Nz,Ny,Nx,in,out,FFTW_FORWARD, FFTW_ESTIMATE)
     call fftw_execute_dft(plan,in,out)
     call fftw_destroy_plan(plan)
-
 end subroutine fft_forward_3d
 
 subroutine fft_backward_3d(Nx,Ny,Nz,in,out)
     integer,intent(in) :: Nx,Ny,Nz
-    complex(C_DOUBLE_COMPLEX),intent(inout) :: in(:,:,:)
-    complex(C_DOUBLE_COMPLEX),intent(out) :: out(:,:,:)
-    type(C_PTR) :: plan
-     
+    complex(C_DOUBLE_COMPLEX),intent(inout) :: in(0:Nx-1,0:Ny-1,0:Nz-1)
+    complex(C_DOUBLE_COMPLEX),intent(out) :: out(0:Nx-1,0:Ny-1,0:Nz-1)
+    type(C_PTR) :: plan     
     plan = fftw_plan_dft_3d(Nz,Ny,Nx,in,out,FFTW_BACKWARD, FFTW_ESTIMATE)
     call fftw_execute_dft(plan,in,out)
     call fftw_destroy_plan(plan)
-
 end subroutine fft_backward_3d
 
 end module fft
