@@ -62,14 +62,6 @@ CMakeFiles/gth.x.dir/main.f90.o: /home/miguel/fortran-utils/src/types.mod
 CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/xc.mod.proxy
 CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/xc.mod.stamp
 
-CMakeFiles/gth.x.dir/projectors.f90.o: /home/miguel/fortran-utils/src/constants.mod
-CMakeFiles/gth.x.dir/projectors.f90.o: /home/miguel/fortran-utils/src/types.mod
-CMakeFiles/gth.x.dir/projectors.mod.proxy: CMakeFiles/gth.x.dir/projectors.f90.o.provides
-CMakeFiles/gth.x.dir/projectors.f90.o.provides.build:
-	$(CMAKE_COMMAND) -E cmake_copy_f90_mod projectors CMakeFiles/gth.x.dir/projectors.mod.stamp GNU
-	$(CMAKE_COMMAND) -E touch CMakeFiles/gth.x.dir/projectors.f90.o.provides.build
-CMakeFiles/gth.x.dir/build: CMakeFiles/gth.x.dir/projectors.f90.o.provides.build
-
 CMakeFiles/gth.x.dir/xc.f90.o: /home/miguel/fortran-utils/src/constants.mod
 CMakeFiles/gth.x.dir/xc.f90.o.requires: CMakeFiles/gth.x.dir/density.mod.proxy
 CMakeFiles/gth.x.dir/xc.f90.o: CMakeFiles/gth.x.dir/density.mod.stamp

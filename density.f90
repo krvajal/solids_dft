@@ -19,6 +19,7 @@ contains
         density_g = 0.0_dp
         allocate(FillingFactor(numGVects))
         FillingFactor = 0
+        
     end subroutine init_density
 
 
@@ -60,15 +61,16 @@ contains
         real(dp) :: omega   ! the unit cell volumen
 
         real(dp),allocatable :: Nj(:,:,:) 
-        ! aux variables for calculation
 
+        ! aux variables for calculation
+        real(dp) :: val
         complex(dp), allocatable :: psi_r(:,:,:)
         complex(dp), allocatable :: psi_k(:,:,:)
 
         integer :: i,k,l,m
         allocate(psi_r(0:Nx-1,0:Ny-1,0:Nz-1))  
         density_r = 0.0_dp
-        print *,"ok"
+     
         do i = 1,numGVects
           
             psi_k = layoutKIndexForFft(Nx,Ny,Nz,numGVects,C(:,i))
@@ -76,7 +78,9 @@ contains
             call fft_backward_3d(Nx,Ny,Nz,psi_k,psi_r)     ! exp(1)  
 
             psi_r = psi_r/sqrt(omega)
+            val =  sum(abs(psi_r)**2)*omega
   
+
             density_r =  density_r + FillingFactor(i)*(psi_r)*conjg(psi_r)
         
         enddo

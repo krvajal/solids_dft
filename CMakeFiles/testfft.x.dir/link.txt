@@ -1,1 +1,0 @@
-/usr/bin/f95     CMakeFiles/testfft.x.dir/fft.f90.o CMakeFiles/testfft.x.dir/test_fft.f90.o  -o testfft.x  -L/home/miguel/fortran-utils/src  -L/usr/local/lib  -lfftw3 -lfortran_utils -llapack -Wl,-rpath,/home/miguel/fortran-utils/src:/usr/local/lib 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente
+CMAKE_SOURCE_DIR = /home/miguel/Desktop/autoconsistente
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente
+CMAKE_BINARY_DIR = /home/miguel/Desktop/autoconsistente
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Desktop/autoconsistente/CMakeFiles /home/miguel/Desktop/autoconsistente/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Desktop/autoconsistente/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -285,33 +285,6 @@ main.f90.s:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/main.f90.s
 .PHONY : main.f90.s
 
-projectors.o: projectors.f90.o
-
-.PHONY : projectors.o
-
-# target to build an object file
-projectors.f90.o:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.o
-.PHONY : projectors.f90.o
-
-projectors.i: projectors.f90.i
-
-.PHONY : projectors.i
-
-# target to preprocess a source file
-projectors.f90.i:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.i
-.PHONY : projectors.f90.i
-
-projectors.s: projectors.f90.s
-
-.PHONY : projectors.s
-
-# target to generate assembly for a file
-projectors.f90.s:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.s
-.PHONY : projectors.f90.s
-
 xc.o: xc.f90.o
 
 .PHONY : xc.o
@@ -366,9 +339,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... projectors.o"
-	@echo "... projectors.i"
-	@echo "... projectors.s"
 	@echo "... xc.o"
 	@echo "... xc.i"
 	@echo "... xc.s"

@@ -25,9 +25,12 @@ real(dp) function pseudo_pot_gth(params, k1, k2) result(retval)
     real(dp) :: k1(3), k2(3)
     real(dp) :: k
     k = norm2(k1 - k2)
-    retval =  pseudo_pot_core(params,k) 
-    retval = retval + pseudo_pot_local(params,k)
-
+    if (k /= 0) then
+        retval =  pseudo_pot_core(params,k) 
+        retval = retval + pseudo_pot_local(params,k)    
+    else 
+        retval = 0
+    endif
 end function pseudo_pot_gth
  
 real(dp) function pseudo_pot_core(params, k) result(retval)

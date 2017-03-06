@@ -20,10 +20,6 @@ FILE(REMOVE
   "GVECT.mod"
   "CMakeFiles/gth.x.dir/gvect.mod.stamp"
 
-  "projectors.mod"
-  "PROJECTORS.mod"
-  "CMakeFiles/gth.x.dir/projectors.mod.stamp"
-
   "xc.mod"
   "XC.mod"
   "CMakeFiles/gth.x.dir/xc.mod.stamp"

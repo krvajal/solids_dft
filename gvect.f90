@@ -9,6 +9,7 @@ integer :: Nx, Ny, Nz ! number of grid points in x, y and z directions
 integer,allocatable :: g_indexes(:,:) ! indexes of g vectors in a linear array
 integer :: numGVects  = 0 
 integer :: ni,nj,nk
+real(dp) :: ni_d, nj_d, nk_d
     
 
 contains 
@@ -19,7 +20,7 @@ subroutine ggen(a, eneryCutoff)
     !----------------------------------
     real(dp), intent(in) :: a, eneryCutoff
 
-   
+   integer :: num2,num3,num5
     integer :: i,j,k
     real(dp) :: twoPiOverA2 
     real(dp) :: energy
@@ -28,12 +29,22 @@ subroutine ggen(a, eneryCutoff)
     numGVects = 0
 
     twoPiOverA2 = (2 * pi / a)**2
-    ni = sqrt(2 * eneryCutoff/twoPiOverA2)
-    nj = sqrt(2 * eneryCutoff/twoPiOverA2)
-    nk = sqrt(2 * eneryCutoff/twoPiOverA2)
-    Nx = 4*ni + 3
-    Ny = 4*nj + 3
-    Nz = 4*nk + 3
+    ni_d = sqrt(2 * eneryCutoff/twoPiOverA2)
+    nj_d = sqrt(2 * eneryCutoff/twoPiOverA2)
+    nk_d = sqrt(2 * eneryCutoff/twoPiOverA2)
+    
+    ! choose the mininum number that is power of 2,3 or 5
+    ! for better fast fourier performance
+    num2 = 2**ceiling(log(4.0*ni_d)/log(2.0))
+    num3 = 3**ceiling(log(4.0*ni_d)/log(3.0))
+    num5 = 5**ceiling(log(4.0*ni_d)/log(5.0))
+    ni = ni_d
+    nj = nj_d
+    nk = nk_d
+    Nx = min(num2,num3,num5)
+    ! for now this is a square box
+    Ny = Nx
+    Nz = Nx
 
     maxNumGVects = 2 * ni + 1
     maxNumGVects = maxNumGVects * (2*nj + 1)

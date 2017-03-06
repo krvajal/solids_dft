@@ -4,14 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_Fortran
-  "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/density.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/density.f90.o"
-  "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/energy.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/energy.f90.o"
-  "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/fft.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/fft.f90.o"
-  "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/gth_potential.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/gth_potential.f90.o"
-  "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/gvect.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/gvect.f90.o"
-  "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/main.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/main.f90.o"
-  "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/projectors.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/projectors.f90.o"
-  "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/xc.f90" "/home/miguel/Dropbox/Maestria/codigos/dft/autoconsistente/CMakeFiles/gth.x.dir/xc.f90.o"
+  "/home/miguel/Desktop/autoconsistente/density.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/density.f90.o"
+  "/home/miguel/Desktop/autoconsistente/energy.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/energy.f90.o"
+  "/home/miguel/Desktop/autoconsistente/fft.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/fft.f90.o"
+  "/home/miguel/Desktop/autoconsistente/gth_potential.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/gth_potential.f90.o"
+  "/home/miguel/Desktop/autoconsistente/gvect.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/gvect.f90.o"
+  "/home/miguel/Desktop/autoconsistente/main.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/main.f90.o"
+  "/home/miguel/Desktop/autoconsistente/xc.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/xc.f90.o"
   )
 set(CMAKE_Fortran_COMPILER_ID "GNU")
 
