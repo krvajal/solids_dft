@@ -19,7 +19,7 @@ contains
         density_g = 0.0_dp
         allocate(FillingFactor(numGVects))
         FillingFactor = 0
-        
+
     end subroutine init_density
 
 
@@ -41,9 +41,8 @@ contains
              if(toK < 0) toK = toK + Nz
                 !print *, toI,toJ,toK, C(i)
              retval(toI,toJ,toK) = complex(C(i),0.0_dp)
+            ! print *,g_grid(:,toI,toJ,toK), g_indexes(:,i)     
         enddo
-    
-
         ! ok, checkeado
     end function layoutKIndexForFft
     !---------------------------------------------
@@ -88,4 +87,13 @@ contains
         call fft_forward_3d(Nx,Ny,Nz,density_r,density_g)      ! exp(-1)  
         density_g = density_g/(Nx*Ny*Nz)    
     end subroutine compute_density
+
+    subroutine to_linear_layout(Nx,Ny,Nz, in, out)
+        integer, intent(in) :: Nx,Ny,Nz
+        complex(dp), intent(in) :: in(Nx,Ny,Nz)
+        complex(dp), intent(out) :: out(Nx,Ny,Nz)
+
+
+    end subroutine to_linear_layout
+
 end module density

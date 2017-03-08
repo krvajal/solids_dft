@@ -7,14 +7,14 @@ program autoconsistente
     use gvect 
     use fft
     use xc
-    use energy
+
     use density
     implicit none
     
 
-
+    character(len = 23) :: argument
     integer :: i, j, k, l
-    real(dp) ::length = 10.0_dp
+    real(dp) ::length = 5.0_dp
     real(dp) :: ecut
     real(dp),allocatable :: hamiltMatrix(:, :)
     real(dp),allocatable :: energies (:)
@@ -24,7 +24,7 @@ program autoconsistente
 
 
     omega = length**3
-  
+
     call init_system()
     call khon_sham_loop()
   
@@ -39,7 +39,7 @@ contains
 
 subroutine init_system()
 
-    ecut = 10
+    ecut = 2.3
     
     !TODO: read params from file 
     call ggen(length, ecut)
@@ -63,6 +63,7 @@ subroutine khon_sham_loop()
     type(GthPotParams) :: paramsHidrogen
     real(dp) :: norm
     integer :: iter
+    type(gth_pp_t) :: pseudopotential
     print  *,"Starting sc loop"
     ! hidrogen parameters
     ! =================================
@@ -77,13 +78,15 @@ subroutine khon_sham_loop()
     density_g(0,0,0) = 1.d0
     norm =  Omega*density_g(0,0,0)
 
+    pseudopotential%params = paramsHidrogen
+
     print *, "density norm", norm
     density_g = density_g/norm
 
     CALL fft_forward_3d(Nx,Ny,Nz, density_g, density_r)
 
     do l = 1, 30
-        call fill_hamilt_matrix(paramsHidrogen,numGVects, g_indexes, hamiltMatrix)
+        call fill_hamilt_matrix(pseudopotential,numGVects, g_indexes, hamiltMatrix)
         ! solve the eigenproblem
         call eigh(hamiltMatrix, energies,psi_coeffs_g)
         ! do iter = 1,7
@@ -95,7 +98,7 @@ subroutine khon_sham_loop()
         ! print *,matmul(hamiltMatrix,C(:,1))/C(:,1)
         
         call compute_density (numGVects, psi_coeffs_g,omega)
-      
+        call compute_total_energy(pseudopotential)
        ! call compute_kinetic_energy(numGVects, FillingFactor, psi_coeffs_g,g_indexes,length)    
        
         ! print *, "kinetic = ", kinetic_energy 
@@ -105,9 +108,9 @@ end subroutine khon_sham_loop
 
 ! evaluate the hamiltonian matrix with K + V
 ! 
-subroutine fill_hamilt_matrix(params,num_orbitals, KBasisSet, hamiltMatrix)
+subroutine fill_hamilt_matrix(pseudpot,num_orbitals, KBasisSet, hamiltMatrix)
     implicit none
-    type(GthPotParams) :: params
+    type(gth_pp_t) :: pseudpot
     integer,intent(in) :: num_orbitals
     integer,intent(in) :: KBasisSet(3,num_orbitals)
     real(dp), intent(out) :: hamiltMatrix(num_orbitals, num_orbitals)
@@ -136,15 +139,15 @@ subroutine fill_hamilt_matrix(params,num_orbitals, KBasisSet, hamiltMatrix)
         hamiltMatrix(i,i) = sum( (2* pi/length * KBasisSet(:,i))**2) /2 !kinetic energy diagonal term
         ! add the pseudopotential
 
-        do j = 1,num_orbitals
-            hamiltMatrix(i,j) = hamiltMatrix(i,j) + &
-                                pseudo_pot_gth(params, &
-                                 KBasisSet(:,i)  * 2*pi/length,&
-                                  KBasisSet(:,j) * 2*pi/length)
-            
-            
-            ! add the vxc
+        do j = 1, num_orbitals
+
             deltaG = KBasisSet(:,i) - KBasisSet(:,j)
+            hamiltMatrix(i,j) = hamiltMatrix(i,j) + &
+                                pseudpot%total(norm2(deltaG * 2*pi/length))
+            
+
+            ! add the vxc
+            
             delta_g2 = sum(deltaG**2)
             ! print *,"deltaG", deltaG
             ! print *, "Nx",Nx
@@ -182,5 +185,38 @@ subroutine fill_hamilt_matrix(params,num_orbitals, KBasisSet, hamiltMatrix)
     ! enddo
 end subroutine fill_hamilt_matrix
 
+subroutine compute_total_energy(pseudopot)
 
+    type(gth_pp_t),intent(in) :: pseudopot
+    real(dp) :: kinetic_energy
+    real(dp) :: exc_corr_energy
+    real(dp) :: pp_local_energy
+    integer :: j, i = 1
+    kinetic_energy  = 0;
+
+    ! compute kinetic energy
+    ! this is give by the formula
+    ! E_{kin} = \sum_{j} f_j \sum_{K} | c^{j}(K)| K^2 /2
+    do i = 1, numGVects
+        do j = 1, numGVects  
+            kinetic_energy = kinetic_energy +  FillingFactor(i)*(psi_coeffs_g(j,i)**2 *sum(g_indexes(:,j)**2))*0.5_dp
+        enddo
+    enddo
+
+
+    exc_corr_energy  = 0
+    call compute_exc()
+    ! compute the exchange correlation energy 
+    ! in reciprocal space 
+    ! given by $E_{xc} = \Omega \sum_{K} \epsilon_{xc}(K)n(K)$
+    exc_corr_energy = sum(exc_g*conjg(density_g))*omega
+    print '(A23 F15.8)', "kinetic energy:", kinetic_energy* 4 * pi*pi/(length*length)
+    print '(A23 F15.8)', "exc energy:", exc_corr_energy
+
+    ! compute the local pseudopotential energy
+    pp_local_energy = omega*sum(pseudopot%local(norm2(g_grid*2*pi/length,1))*conjg(density_g))
+
+    print '(A23 F15.8)', "pp_local_energy:", pp_local_energy
+
+end subroutine compute_total_energy
 end program autoconsistente

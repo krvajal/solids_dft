@@ -49,8 +49,6 @@ CMakeFiles/gth.x.dir/build: CMakeFiles/gth.x.dir/gvect.f90.o.provides.build
 CMakeFiles/gth.x.dir/main.f90.o: /home/miguel/fortran-utils/src/constants.mod
 CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/density.mod.proxy
 CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/density.mod.stamp
-CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/energy.mod.proxy
-CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/energy.mod.stamp
 CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/fft.mod.proxy
 CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/fft.mod.stamp
 CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/gth_potential.mod.proxy
@@ -65,6 +63,8 @@ CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/xc.mod.stamp
 CMakeFiles/gth.x.dir/xc.f90.o: /home/miguel/fortran-utils/src/constants.mod
 CMakeFiles/gth.x.dir/xc.f90.o.requires: CMakeFiles/gth.x.dir/density.mod.proxy
 CMakeFiles/gth.x.dir/xc.f90.o: CMakeFiles/gth.x.dir/density.mod.stamp
+CMakeFiles/gth.x.dir/xc.f90.o.requires: CMakeFiles/gth.x.dir/fft.mod.proxy
+CMakeFiles/gth.x.dir/xc.f90.o: CMakeFiles/gth.x.dir/fft.mod.stamp
 CMakeFiles/gth.x.dir/xc.f90.o.requires: CMakeFiles/gth.x.dir/gvect.mod.proxy
 CMakeFiles/gth.x.dir/xc.f90.o: CMakeFiles/gth.x.dir/gvect.mod.stamp
 CMakeFiles/gth.x.dir/xc.f90.o: /home/miguel/fortran-utils/src/types.mod

@@ -4,9 +4,8 @@ module gth_potential
     implicit none
 
     private 
-    public pseudo_pot_gth, GthPotParams, pseudo_pot_local,pseudo_pot_core
+    public pseudo_pot_gth, GthPotParams, gth_pp_t
 
-    
     type :: GthPotParams
         real(dp) :: chi
         real(dp) :: c1
@@ -17,40 +16,58 @@ module gth_potential
         real(dp) :: box_length
     end type GthPotParams
 
+    type :: gth_pp_t
+        type(GthPotParams) :: params
+        contains 
+        procedure :: local => pseudo_pot_local
+        procedure :: core => pseudo_pot_core
+        procedure :: total => pseudo_pot_gth
+
+    end type gth_pp_t
+
 contains
 
-real(dp) function pseudo_pot_gth(params, k1, k2) result(retval)
-
-    type(GthPotParams) :: params
-    real(dp) :: k1(3), k2(3)
-    real(dp) :: k
-    k = norm2(k1 - k2)
+elemental real(dp) function pseudo_pot_gth(this, k) result(retval)
+    class(gth_pp_t),intent(in) :: this 
+    real(dp),intent(in) :: k
+       
     if (k /= 0) then
-        retval =  pseudo_pot_core(params,k) 
-        retval = retval + pseudo_pot_local(params,k)    
+        retval =  this%core(k)
+        retval = retval + this%local(k)
     else 
         retval = 0
     endif
 end function pseudo_pot_gth
  
-real(dp) function pseudo_pot_core(params, k) result(retval)
-    type(GthPotParams) :: params
-    real(dp) :: k, chi
-    chi = params%chi /params%box_length    
+elemental real(dp) function pseudo_pot_core(this, k) result(retval)
+    class(gth_pp_t),intent(in) :: this
+    real(dp),intent(in) :: k
+    real(dp) :: chi
+
+    chi = this%params%chi /this%params%box_length    
+    
     retval = 0.0
+
     if(abs(k) > tiny(1.0_dp)) then
-        retval = - 4 *pi * params%Zeff / params%omega
+        retval = - 4 *pi * this%params%Zeff / this%params%omega
         retval = retval * exp(- 0.5_dp * (k * chi)**2)
         retval = retval /(k**2)
     endif 
+
 end function pseudo_pot_core
 
 
-real(dp) function pseudo_pot_local(params, k) result(retval)
-    type(GthPotParams) :: params
-    real(dp) :: k,chi
+elemental real(dp) function pseudo_pot_local(this, k) result(retval)
 
+    class(gth_pp_t),intent(in) :: this
+    real(dp),intent(in) :: k
+
+    type(GthPotParams) :: params
+    real(dp) :: chi
+
+    params = this%params
     chi =  params%chi / params%box_length
+    
     retval = (2*pi)**(1.5_dp)* chi**3 /params%omega
     retval = retval * exp(-0.5_dp * (k * chi)**2)
     retval = retval * (params%c1 + params%c2 * (3 - (k*chi)**2))

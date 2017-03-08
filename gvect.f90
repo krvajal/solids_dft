@@ -3,10 +3,10 @@ module gvect
     use constants    
 implicit none
 private 
-public g_indexes, numGVects, ggen, ni,nj,nk, Nx,Ny,Nz
+public g_indexes, numGVects, ggen, ni,nj,nk, Nx,Ny,Nz, g_grid
 
 integer :: Nx, Ny, Nz ! number of grid points in x, y and z directions
-integer,allocatable :: g_indexes(:,:) ! indexes of g vectors in a linear array
+integer,allocatable :: g_indexes(:,:), g_grid(:,:,:,:) ! indexes of g vectors in a linear array
 integer :: numGVects  = 0 
 integer :: ni,nj,nk
 real(dp) :: ni_d, nj_d, nk_d
@@ -21,7 +21,7 @@ subroutine ggen(a, eneryCutoff)
     real(dp), intent(in) :: a, eneryCutoff
 
    integer :: num2,num3,num5
-    integer :: i,j,k
+    integer :: i,j,k, ii, jj, kk
     real(dp) :: twoPiOverA2 
     real(dp) :: energy
     integer :: maxNumGVects
@@ -64,7 +64,22 @@ subroutine ggen(a, eneryCutoff)
             enddo
         enddo
     enddo
-    
+    allocate (g_grid(3, 0:Nx-1,0:Ny-1,0:Nz-1))
+    g_grid = 0
+    do i = 0,Nx-1
+        do j = 0, Ny -1
+            do k = 0, Nz - 1   
+                ii =  i
+                if (ii > Nx/2) ii = (ii- Nx)
+                jj =  j
+                if (jj > Ny/2) jj =  jj - Ny
+                kk =  k
+                if (kk > Nz/2) kk = kk - Nz
+                g_grid(:,i,j,k) = (/ ii, jj, kk/)
+            enddo
+        enddo
+    enddo
+
 
 end subroutine ggen
 

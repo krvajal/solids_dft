@@ -4,10 +4,12 @@ use types
 use density
 use gvect
 use constants
+use fft
 implicit none
 private  
-public exc, compute_exc,init_xc, vxc_r, compute_vxc
-real(dp),allocatable :: exc(:,:,:)
+public exc, exc_g, compute_exc,init_xc, vxc_r, compute_vxc
+
+complex(dp),allocatable :: exc_g(:,:,:),exc(:,:,:)
 
 real(dp),allocatable :: num(:,:,:), dnum(:,:,:),den(:,:,:),dden(:,:,:)
 
@@ -29,6 +31,7 @@ contains
 subroutine init_xc()
 
     allocate(exc(0:Nx-1,0:Ny-1,0:Nz-1))
+    allocate(exc_g(0:Nx-1,0:Ny-1,0:Nz-1))
 
     allocate(num(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(dnum(0:Nx-1,0:Ny-1,0:Nz-1))
@@ -56,6 +59,9 @@ subroutine compute_exc()
         den =  den + b(i) * rs**i
     enddo
     exc = - num/den
+    call fft_backward_3d(Nx,Ny,Nz,exc, exc_g)
+    exc_g = exc_g/(Nx*Ny*Nz)
+
 end subroutine compute_exc
 
 ! compute the xc potential of pw parametrization
