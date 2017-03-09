@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 /usr/bin/f95     CMakeFiles/gth.x.dir/main.f90.o CMakeFiles/gth.x.dir/gth_potential.f90.o CMakeFiles/gth.x.dir/gvect.f90.o CMakeFiles/gth.x.dir/fft.f90.o CMakeFiles/gth.x.dir/density.f90.o CMakeFiles/gth.x.dir/xc.f90.o CMakeFiles/gth.x.dir/energy.f90.o  -o gth.x  -L/home/miguel/fortran-utils/src  -L/usr/local/lib  -lfortran_utils -llapack -lfftw3 -Wl,-rpath,/home/miguel/fortran-utils/src:/usr/local/lib 
+=======
+/usr/local/bin/gfortran     -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk CMakeFiles/gth.x.dir/main.f90.o CMakeFiles/gth.x.dir/gth_potential.f90.o CMakeFiles/gth.x.dir/projectors.f90.o CMakeFiles/gth.x.dir/gvect.f90.o CMakeFiles/gth.x.dir/fft.f90.o CMakeFiles/gth.x.dir/density.f90.o CMakeFiles/gth.x.dir/xc.f90.o  -o gth.x  -L/Users/carvajal/fortran-utils/src  -L/usr/local/lib  -lfortran_utils -llapack -lfftw3 -Wl,-rpath,/Users/carvajal/fortran-utils/src -Wl,-rpath,/usr/local/lib 
+>>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14

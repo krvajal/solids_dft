@@ -1,5 +1,6 @@
 module gvect
     use types
+
     use constants    
 implicit none
 private 
@@ -12,7 +13,6 @@ integer :: numGVects  = 0
 integer :: ni,nj,nk
 real(dp) :: ni_d, nj_d, nk_d
     
-
 contains 
 ! ---------------------------------
 subroutine ggen(a, eneryCutoff)
@@ -30,6 +30,7 @@ subroutine ggen(a, eneryCutoff)
     numGVects = 0
 
     twoPiOverA2 = (2 * pi / a)**2
+<<<<<<< HEAD
     ni_d = sqrt(2 * eneryCutoff/twoPiOverA2)
     nj_d = sqrt(2 * eneryCutoff/twoPiOverA2)
     nk_d = sqrt(2 * eneryCutoff/twoPiOverA2)
@@ -46,8 +47,18 @@ subroutine ggen(a, eneryCutoff)
     ! for now this is a square box
     Ny = Nx
     Nz = Nx
+=======
+    ni = sqrt(2 * eneryCutoff/twoPiOverA2)
+    nj = sqrt(2 * eneryCutoff/twoPiOverA2)
+    nk = sqrt(2 * eneryCutoff/twoPiOverA2)
+
+    Nx = 4 * ni + 1
+    Ny = 4 * nj + 1
+    Nz = 4 * nk + 1
+>>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 
     maxNumGVects = 2 * ni + 1
+
     maxNumGVects = maxNumGVects * (2*nj + 1)
     maxNumGVects = maxNumGVects * (2*nk + 1)
 
@@ -65,6 +76,7 @@ subroutine ggen(a, eneryCutoff)
             enddo
         enddo
     enddo
+<<<<<<< HEAD
 
     
     allocate (g_grid(3, 0:Nx-1,0:Ny-1,0:Nz-1))
@@ -91,6 +103,11 @@ subroutine ggen(a, eneryCutoff)
         enddo
     enddo
 
+=======
+
+    
+end subroutine ggen
+>>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 
 end subroutine ggen
 
