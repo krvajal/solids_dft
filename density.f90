@@ -2,23 +2,33 @@ module density
     use types
     use gvect
     use fft
+    use gth_potential
+    use constants
     implicit none
 
     
 complex(dp),allocatable :: density_r(:,:,:) !density in real space
 complex(dp),allocatable :: density_g(:,:,:) !density in reciprocal space
+complex(dp),allocatable :: core_density_g(:,:,:), total_density_g(:,:,:)
 real(dp),allocatable ::  FillingFactor(:)
 
 contains
-    subroutine init_density(Nx,Ny,Nz,numGVects)
+    subroutine init_density(Nx,Ny,Nz,numGVects, params)
         integer, intent(in) :: Nx,Ny,Nz,numGVects
+        type(GthPotParams) :: params
+        real(dp) :: chi, two_pi_over_l
 
+        chi = params%chi 
+        two_pi_over_l = 2 * pi / params%box_length
         allocate(density_r(0:Nx-1,0:Ny-1,0:Nz-1))
         allocate(density_g(0:Nx-1,0:Ny-1,0:Nz-1))
+        allocate(core_density_g(0:Nx-1,0:Ny-1,0:Nz-1))
+        allocate(total_density_g(0:Nx-1,0:Ny-1,0:Nz-1))
         density_r = 0.0_dp
         density_g = 0.0_dp
         allocate(FillingFactor(numGVects))
         FillingFactor = 0
+        core_density_g = - params%Zeff/params%omega * exp(-0.5 *(g_grid_norm * chi * two_pi_over_l)**2 )
 
     end subroutine init_density
 
@@ -74,17 +84,17 @@ contains
           
             psi_k = layoutKIndexForFft(Nx,Ny,Nz,numGVects,C(:,i))
        
-            call fft_backward_3d(Nx,Ny,Nz,psi_k,psi_r)     ! exp(1)  
+            call fft_forward_3d(Nx,Ny,Nz,psi_k,psi_r)     ! exp(1)  
 
             psi_r = psi_r/sqrt(omega)
             val =  sum(abs(psi_r)**2)*omega
-  
-
+        
             density_r =  density_r + FillingFactor(i)*(psi_r)*conjg(psi_r)
         
         enddo
 
-        call fft_forward_3d(Nx,Ny,Nz,density_r,density_g)      ! exp(-1)  
+        call fft_backward_3d(Nx,Ny,Nz,density_r,density_g)      ! exp(-1)  
+
         density_g = density_g/(Nx*Ny*Nz)    
     end subroutine compute_density
 

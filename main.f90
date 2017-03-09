@@ -22,10 +22,27 @@ program autoconsistente
     real(dp) :: omega
     complex(dp),allocatable :: vhartee_r(:,:,:)
 
+    type(GthPotParams) :: paramsHidrogen
+    real(dp) :: norm
+    integer :: iter
+    type(gth_pp_t) :: pseudopotential
+
 
     omega = length**3
+    ! hidrogen parameters
+    ! =================================
+    paramsHidrogen%c1 = -4.0663326_dp
+    paramsHidrogen%c2 = 0.6778322_dp
+    paramsHidrogen%chi = 0.2_dp
+    paramsHidrogen%Zeff = 1 
+    paramsHidrogen%omega = omega ! cell with edge length of 5.0 a.u.
+    paramsHidrogen%box_length = length
+   ! =================================
+
+    
 
     call init_system()
+    print  *,"Starting sc loop"
     call khon_sham_loop()
   
     ! results from thijssen
@@ -39,7 +56,7 @@ contains
 
 subroutine init_system()
 
-    ecut = 2.3
+    ecut = 20.3
     
     !TODO: read params from file 
     call ggen(length, ecut)
@@ -51,7 +68,7 @@ subroutine init_system()
     print *, "GridDim:", Nx,Ny,Nz
     print *, "num_orbitals:", numGVects
 
-    call init_density(Nx,Ny,Nz,numGVects)
+    call init_density(Nx,Ny,Nz,numGVects,paramsHidrogen)
 
     FillingFactor(1) = 1 ! only one atom
     call init_xc()
@@ -60,20 +77,7 @@ end subroutine init_system
 
 subroutine khon_sham_loop()
 
-    type(GthPotParams) :: paramsHidrogen
-    real(dp) :: norm
-    integer :: iter
-    type(gth_pp_t) :: pseudopotential
-    print  *,"Starting sc loop"
-    ! hidrogen parameters
-    ! =================================
-    paramsHidrogen%c1 = -4.0663326_dp
-    paramsHidrogen%c2 = 0.6778322_dp
-    paramsHidrogen%chi = 0.2_dp
-    paramsHidrogen%Zeff = 1 
-    paramsHidrogen%omega = omega ! cell with edge length of 5.0 a.u.
-    paramsHidrogen%box_length = length
-   ! =================================
+   
     density_g = 0.d0
     density_g(0,0,0) = 1.d0
     norm =  Omega*density_g(0,0,0)
@@ -86,6 +90,9 @@ subroutine khon_sham_loop()
     CALL fft_forward_3d(Nx,Ny,Nz, density_g, density_r)
 
     do l = 1, 30
+        print *, "=============================="
+        print *, "Starting KS iteration no ", l
+        print *, "=============================="
         call fill_hamilt_matrix(pseudopotential,numGVects, g_indexes, hamiltMatrix)
         ! solve the eigenproblem
         call eigh(hamiltMatrix, energies,psi_coeffs_g)
@@ -93,7 +100,7 @@ subroutine khon_sham_loop()
         !     print *, hamiltMatrix(iter,:)
         ! enddo
         
-         print *,"Energies = ",energies(1:7)
+         print *,"eigenvalue = ",energies(1)
          ! stop
         ! print *,matmul(hamiltMatrix,C(:,1))/C(:,1)
         
@@ -143,7 +150,7 @@ subroutine fill_hamilt_matrix(pseudpot,num_orbitals, KBasisSet, hamiltMatrix)
 
             deltaG = KBasisSet(:,i) - KBasisSet(:,j)
             hamiltMatrix(i,j) = hamiltMatrix(i,j) + &
-                                pseudpot%total(norm2(deltaG * 2*pi/length))
+                                pseudpot%local(norm2(deltaG * 2*pi/length))
             
 
             ! add the vxc
@@ -188,12 +195,23 @@ end subroutine fill_hamilt_matrix
 subroutine compute_total_energy(pseudopot)
 
     type(gth_pp_t),intent(in) :: pseudopot
+    real(dp) :: total_energy
     real(dp) :: kinetic_energy
     real(dp) :: exc_corr_energy
     real(dp) :: pp_local_energy
+    real(dp) :: hartree_energy
+    real(dp) :: self_energy, electrostatic_energy
+    real(dp) :: local_core_energy
     integer :: j, i = 1
+    real(dp) :: fact,fact2
+
+
+    total_energy = 0;
     kinetic_energy  = 0;
 
+    fact = 2*pi/pseudopot%params%box_length;
+    fact2 =  pseudopot%params%omega * pseudopot%params%box_length**2/(2*pi)
+    
     ! compute kinetic energy
     ! this is give by the formula
     ! E_{kin} = \sum_{j} f_j \sum_{K} | c^{j}(K)| K^2 /2
@@ -202,7 +220,7 @@ subroutine compute_total_energy(pseudopot)
             kinetic_energy = kinetic_energy +  FillingFactor(i)*(psi_coeffs_g(j,i)**2 *sum(g_indexes(:,j)**2))*0.5_dp
         enddo
     enddo
-
+    kinetic_energy = kinetic_energy * fact**2
 
     exc_corr_energy  = 0
     call compute_exc()
@@ -210,13 +228,47 @@ subroutine compute_total_energy(pseudopot)
     ! in reciprocal space 
     ! given by $E_{xc} = \Omega \sum_{K} \epsilon_{xc}(K)n(K)$
     exc_corr_energy = sum(exc_g*conjg(density_g))*omega
-    print '(A23 F15.8)', "kinetic energy:", kinetic_energy* 4 * pi*pi/(length*length)
-    print '(A23 F15.8)', "exc energy:", exc_corr_energy
+    print '(A23 F15.8 A23)', "kinetic energy:", kinetic_energy, "ok!"
 
-    ! compute the local pseudopotential energy
-    pp_local_energy = omega*sum(pseudopot%local(norm2(g_grid*2*pi/length,1))*conjg(density_g))
+    total_energy = total_energy + kinetic_energy
 
-    print '(A23 F15.8)', "pp_local_energy:", pp_local_energy
+    print '(A23 F15.8 A23)', "exc energy:", exc_corr_energy,"ok!"
 
+    total_energy  = total_energy + exc_corr_energy
+
+    ! compute the local pseudopotential energy    
+    pp_local_energy = omega*sum(pseudopot%short(g_grid_norm*fact)*conjg(density_g))
+
+    print '(A23 F15.8)', "pp_local_short_energy:", pp_local_energy
+
+    total_energy = total_energy + pp_local_energy
+
+    ! compute the n total
+    total_density_g = core_density_g + density_g
+
+    hartree_energy = fact2 * sum(density_g*conjg(density_g)*(g_grid_norm_inv)**2)
+    ! print '(A23 F15.8)', "hartree_energy", hartree_energy
+
+    
+    print *, "Electrostatic energy terms"
+
+    electrostatic_energy = fact2 * sum((density_g + core_density_g)*conjg(core_density_g +  density_g)*(g_grid_norm_inv)**2)
+    print '(A23 F15.4)', "total_density_energy", electrostatic_energy
+
+    ! compute the self energy
+    self_energy = pseudopot%params%zeff**2/(2*sqrt(pi) * pseudopot%params%chi )
+    print '(A23 F15.4 A23)', "self_energy", self_energy, "ok!"
+    electrostatic_energy =  electrostatic_energy - self_energy
+    print '(A23 F15.4 A23)', "electrostatic_energy", electrostatic_energy 
+    total_energy =  total_energy + electrostatic_energy
+
+    !===============================================================================================
+    ! excludes g = 0 automatically
+    local_core_energy = fact2 * sum( core_density_g*conjg(core_density_g) * (g_grid_norm_inv)**2) 
+    ! print '(A23 F15.8 )', "local_core_energy", local_core_energy   
+    !================================================================================================
+
+   ! total_energy = kinetic_energy + exc_corr_energy + pp_local_energy + electrostatic_energy
+    print  '(A23 F15.4)', "total_energy", total_energy
 end subroutine compute_total_energy
 end program autoconsistente

@@ -3,10 +3,11 @@ module gvect
     use constants    
 implicit none
 private 
-public g_indexes, numGVects, ggen, ni,nj,nk, Nx,Ny,Nz, g_grid
+public g_indexes, numGVects, ggen, ni,nj,nk, Nx,Ny,Nz, g_grid, g_grid_norm, g_grid_norm_inv
 
 integer :: Nx, Ny, Nz ! number of grid points in x, y and z directions
-integer,allocatable :: g_indexes(:,:), g_grid(:,:,:,:) ! indexes of g vectors in a linear array
+integer,allocatable :: g_indexes(:,:), g_grid(:,:,:,:)
+real(dp),allocatable :: g_grid_norm(:,:,:), g_grid_norm_inv(:,:,:) ! indexes of g vectors in a linear array
 integer :: numGVects  = 0 
 integer :: ni,nj,nk
 real(dp) :: ni_d, nj_d, nk_d
@@ -64,7 +65,12 @@ subroutine ggen(a, eneryCutoff)
             enddo
         enddo
     enddo
+
+    
     allocate (g_grid(3, 0:Nx-1,0:Ny-1,0:Nz-1))
+    allocate (g_grid_norm(0:Nx-1,0:Ny-1,0:Nz-1))
+    allocate (g_grid_norm_inv(0:Nx-1,0:Ny-1,0:Nz-1))
+    g_grid_norm_inv = 0
     g_grid = 0
     do i = 0,Nx-1
         do j = 0, Ny -1
@@ -76,6 +82,11 @@ subroutine ggen(a, eneryCutoff)
                 kk =  k
                 if (kk > Nz/2) kk = kk - Nz
                 g_grid(:,i,j,k) = (/ ii, jj, kk/)
+                g_grid_norm(i,j,k) = norm2([real(ii), real(jj), real(kk)])
+                if (g_grid_norm(i,j,k) /= 0 ) then
+                    ! excludes g = 0s
+                    g_grid_norm_inv(i,j,k) = 1.0/g_grid_norm(i,j,k)
+                endif
             enddo
         enddo
     enddo
