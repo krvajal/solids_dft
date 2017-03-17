@@ -31,7 +31,7 @@ contains
         allocate(FillingFactor(numGVects))
         FillingFactor = 0
         core_density_g = - params%Zeff/params%omega * exp(-0.5 *(g_grid_norm * chi * two_pi_over_l)**2 )
-        core_density_g = core_density_g * structure_factor
+        !core_density_g = core_density_g * structure_factor
     end subroutine init_density
 
 
@@ -69,7 +69,7 @@ end function layoutKIndexForFft
     subroutine compute_density(N,C,omega)
         implicit none
         integer,intent(in) :: N !number of G vectors
-        complex(dp) :: C(N,N)  ! the wave functions expansion coeffs, C(:,j) for thr jth one
+        complex(dp) :: C(N,N)  ! the wave functions expansion coeffs, C(:,j) for the jth one
         real(dp) :: omega   ! the unit cell volumen
 
         real(dp),allocatable :: Nj(:,:,:) 
@@ -92,7 +92,7 @@ end function layoutKIndexForFft
             psi_r = psi_r/sqrt(omega)
             val =  sum(abs(psi_r)**2)*omega
         
-            density_r =  density_r + FillingFactor(i)*(psi_r)*conjg(psi_r)
+            density_r =  density_r + FillingFactor(i)*psi_r*conjg(psi_r)
         
         enddo
 

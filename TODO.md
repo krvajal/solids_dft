@@ -1,5 +1,6 @@
 # TODOS
-* Allow for an atom at a position different than (0,0,0)
+* Allow for an atom at a position different than (0,0,0) 
+The one above is almost done, some litte bug around yet
 * Allow more than one atom
 * Implement non-local part of the pseudopotential
 * Implement overlaping term on the energy

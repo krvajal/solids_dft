@@ -1,6 +1,5 @@
 module gvect
     use types
-
     use constants    
 implicit none
 private 
@@ -24,17 +23,17 @@ subroutine ggen(a, eneryCutoff)
 
    integer :: num2,num3,num5
     integer :: i,j,k, ii, jj, kk
-    real(dp) :: twoPiOverA2 
+    real(dp) :: twoPiOverA, twoPiOverA2 
     real(dp) :: energy
     integer :: maxNumGVects
     
  !temporary
-    atom_pos =  0![0.5*a, 0.2*a,0.0_dp]
+    atom_pos = [0.0_dp,1.0_dp,0.0_dp]
  !---------
 
     numGVects = 0
-
-    twoPiOverA2 = (2 * pi / a)**2
+    twoPiOverA = (2*pi/a)
+    twoPiOverA2 = twoPiOverA**2
 
     ni_d = sqrt(2 * eneryCutoff/twoPiOverA2)
     nj_d = sqrt(2 * eneryCutoff/twoPiOverA2)
@@ -82,7 +81,7 @@ subroutine ggen(a, eneryCutoff)
     g_grid = 0
 
     allocate (structure_factor(0:Nx-1,0:Ny-1,0:Nz-1))
-
+    structure_factor = 0
     do i = 0,Nx-1
         do j = 0, Ny -1
             do k = 0, Nz - 1   
@@ -95,8 +94,8 @@ subroutine ggen(a, eneryCutoff)
                 g_grid(:,i,j,k) = (/ ii, jj, kk/)
 
                 !compute the strucure factor for one atom
-                structure_factor(i,j,k) = exp(- complex(0.0,1.0) * twoPiOverA2 * dot_product(g_grid(:,i,j,k), atom_pos))
-
+                structure_factor(i,j,k) = exp(complex(0.0,1.0) * twoPiOverA * dot_product(g_grid(:,i,j,k), atom_pos))
+                ! print *, ii,jj,kk, structure_factor(i,j,k)
                 g_grid_norm(i,j,k) = norm2([real(ii), real(jj), real(kk)])
                 if (g_grid_norm(i,j,k) /= 0 ) then
                     ! excludes g = 0s
@@ -105,6 +104,7 @@ subroutine ggen(a, eneryCutoff)
             enddo
         enddo
     enddo
+
 
 end subroutine ggen
 
