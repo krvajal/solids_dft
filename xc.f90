@@ -7,18 +7,13 @@ use constants
 use fft
 implicit none
 private  
-<<<<<<< HEAD
+
 public exc, exc_g, compute_exc,init_xc, vxc_r, compute_vxc
 
 complex(dp),allocatable :: exc_g(:,:,:),exc(:,:,:)
 
 real(dp),allocatable :: num(:,:,:), dnum(:,:,:),den(:,:,:),dden(:,:,:)
-=======
-public exc, compute_exc,init_xc, vxc_r, compute_vxc
-real(dp),allocatable :: exc(:,:,:)
 
-real(dp),allocatable :: num1(:,:,:), num2(:,:,:),den(:,:,:)
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 
 real(dp),allocatable :: vxc_r(:,:,:) !   xc potential in real space
 real(dp),allocatable :: exc_(:,:,:)
@@ -37,7 +32,6 @@ contains
 
 subroutine init_xc()
 
-<<<<<<< HEAD
     allocate(exc(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(exc_g(0:Nx-1,0:Ny-1,0:Nz-1))
 
@@ -49,16 +43,6 @@ subroutine init_xc()
     allocate(dden(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(rs(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(vxc_r(0:Nx-1,0:Ny-1,0:Nz-1))
-=======
-    allocate(exc(Nx,Ny,Nz))
-
-    allocate(num1(Nx,Ny,Nz))
-    allocate(num2(Nx,Ny,Nz))
-
-    allocate(den(Nx,Ny,Nz))
-    allocate(rs(Nx,Ny,Nz))
-    allocate(vxc_r(Nx,Ny,Nz))
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 
 end subroutine init_xc
 
@@ -68,7 +52,7 @@ end subroutine init_xc
 subroutine compute_exc()
     integer :: i,j   
     
-<<<<<<< HEAD
+
     rs = (3.0/(4.0*pi*density_r))**(1./3) 
 
     num = 0
@@ -80,22 +64,11 @@ subroutine compute_exc()
     exc = - num/den
     call fft_backward_3d(Nx,Ny,Nz,exc, exc_g)
     exc_g = exc_g/(Nx*Ny*Nz)
-=======
-    rs = (3/(4*pi*NtotalR))**(1./3) 
-
-    num1 = 0
-    den = 0
-    do i = 1,4
-        num1 = num1 + a(i) * rs**(i-1)
-        den =  den + b(i) * rs**i
-    enddo
-    exc = - num1/den
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 
 end subroutine compute_exc
 
 ! compute the xc potential of pw parametrization
-<<<<<<< HEAD
+
 ! vxc = exc + n * d exc / dn
 subroutine compute_vxc()
 
@@ -131,31 +104,7 @@ subroutine compute_vxc()
     
     ! vxc_r = exc - 1.0_dp/3.0_dp * rs * dvxc_drs
     ! vxc_r =  -dvxc_drs*rs/3
-=======
-! vxc = exc + n * d exc /dn
 
-subroutine compute_vxc()
-
-    integer :: i 
-
-    call compute_exc()
-    
-    rs = (3/(4*pi*NtotalR))**(1./3) 
-    
-    num1 = 0
-    num2 = 0
-    Den = 0
-    do i = 1,4
-        den =  Den + b(i) * rs**i
-        num1 = num1 + a(i) * (i-1)*rs**(i-2)
-        num2 = num2 + b(i) * i * rs**(i-1)
-    enddo
-
-    vxc_r = - (num1 - num2 * exc)
-    
-    vxc_r = exc - 1/3.0_dp * rs * vxc_r
-
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 end subroutine compute_vxc
 
 end module xc

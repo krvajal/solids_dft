@@ -2,7 +2,7 @@ module density
     use types
     use gvect
     use fft
-    use gth_potential
+    use pseudopot
     use constants
     implicit none
 

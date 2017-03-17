@@ -1,4 +1,4 @@
-module gth_potential
+module pseudopot
     use types
     use constants
     implicit none
@@ -81,4 +81,4 @@ elemental real(dp) function pseudo_pot_short(this, k) result(retval)
 
 end function pseudo_pot_short
 
-end module gth_potential
+end module pseudopot

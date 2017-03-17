@@ -39,34 +39,27 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.5.0/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.5.0/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/miguel/Desktop/autoconsistente
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/miguel/Desktop/autoconsistente
-=======
-CMAKE_SOURCE_DIR = /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.5.0/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +70,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.5.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,15 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Desktop/autoconsistente/CMakeFiles /home/miguel/Desktop/autoconsistente/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguel/Desktop/autoconsistente/CMakeFiles 0
-=======
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carvajal/Dropbox/Maestria/codigos/dft/freeparticle/CMakeFiles 0
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 .PHONY : all
 
 # The main clean target
@@ -136,48 +123,6 @@ gth.x/fast:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/build
 .PHONY : gth.x/fast
 
-<<<<<<< HEAD
-=======
-#=============================================================================
-# Target rules for targets named testfft.x
-
-# Build rule for target.
-testfft.x: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testfft.x
-.PHONY : testfft.x
-
-# fast build rule for target.
-testfft.x/fast:
-	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/build
-.PHONY : testfft.x/fast
-
-#=============================================================================
-# Target rules for targets named test.x
-
-# Build rule for target.
-test.x: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test.x
-.PHONY : test.x
-
-# fast build rule for target.
-test.x/fast:
-	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/build
-.PHONY : test.x/fast
-
-#=============================================================================
-# Target rules for targets named free.x
-
-# Build rule for target.
-free.x: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 free.x
-.PHONY : free.x
-
-# fast build rule for target.
-free.x/fast:
-	$(MAKE) -f CMakeFiles/free.x.dir/build.make CMakeFiles/free.x.dir/build
-.PHONY : free.x/fast
-
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 density.o: density.f90.o
 
 .PHONY : density.o
@@ -205,33 +150,6 @@ density.f90.s:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/density.f90.s
 .PHONY : density.f90.s
 
-energy.o: energy.f90.o
-
-.PHONY : energy.o
-
-# target to build an object file
-energy.f90.o:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/energy.f90.o
-.PHONY : energy.f90.o
-
-energy.i: energy.f90.i
-
-.PHONY : energy.i
-
-# target to preprocess a source file
-energy.f90.i:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/energy.f90.i
-.PHONY : energy.f90.i
-
-energy.s: energy.f90.s
-
-.PHONY : energy.s
-
-# target to generate assembly for a file
-energy.f90.s:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/energy.f90.s
-.PHONY : energy.f90.s
-
 fft.o: fft.f90.o
 
 .PHONY : fft.o
@@ -258,33 +176,6 @@ fft.s: fft.f90.s
 fft.f90.s:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/fft.f90.s
 .PHONY : fft.f90.s
-
-gth_potential.o: gth_potential.f90.o
-
-.PHONY : gth_potential.o
-
-# target to build an object file
-gth_potential.f90.o:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.o
-.PHONY : gth_potential.f90.o
-
-gth_potential.i: gth_potential.f90.i
-
-.PHONY : gth_potential.i
-
-# target to preprocess a source file
-gth_potential.f90.i:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.i
-.PHONY : gth_potential.f90.i
-
-gth_potential.s: gth_potential.f90.s
-
-.PHONY : gth_potential.s
-
-# target to generate assembly for a file
-gth_potential.f90.s:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gth_potential.f90.s
-.PHONY : gth_potential.f90.s
 
 gvect.o: gvect.f90.o
 
@@ -314,8 +205,6 @@ gvect.f90.s:
 .PHONY : gvect.f90.s
 
 main.o: main.f90.o
-<<<<<<< HEAD
-=======
 
 .PHONY : main.o
 
@@ -349,7 +238,6 @@ projectors.o: projectors.f90.o
 # target to build an object file
 projectors.f90.o:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.o
-	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.o
 .PHONY : projectors.f90.o
 
 projectors.i: projectors.f90.i
@@ -359,7 +247,6 @@ projectors.i: projectors.f90.i
 # target to preprocess a source file
 projectors.f90.i:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.i
-	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.i
 .PHONY : projectors.f90.i
 
 projectors.s: projectors.f90.s
@@ -369,63 +256,34 @@ projectors.s: projectors.f90.s
 # target to generate assembly for a file
 projectors.f90.s:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/projectors.f90.s
-	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/projectors.f90.s
 .PHONY : projectors.f90.s
 
-test_fft.o: test_fft.f90.o
+pseudopot.o: pseudopot.f90.o
 
-.PHONY : test_fft.o
-
-# target to build an object file
-test_fft.f90.o:
-	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/test_fft.f90.o
-.PHONY : test_fft.f90.o
-
-test_fft.i: test_fft.f90.i
-
-.PHONY : test_fft.i
-
-# target to preprocess a source file
-test_fft.f90.i:
-	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/test_fft.f90.i
-.PHONY : test_fft.f90.i
-
-test_fft.s: test_fft.f90.s
-
-.PHONY : test_fft.s
-
-# target to generate assembly for a file
-test_fft.f90.s:
-	$(MAKE) -f CMakeFiles/testfft.x.dir/build.make CMakeFiles/testfft.x.dir/test_fft.f90.s
-.PHONY : test_fft.f90.s
-
-test_projectors.o: test_projectors.f90.o
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
-
-.PHONY : main.o
+.PHONY : pseudopot.o
 
 # target to build an object file
-main.f90.o:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/main.f90.o
-.PHONY : main.f90.o
+pseudopot.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/pseudopot.f90.o
+.PHONY : pseudopot.f90.o
 
-main.i: main.f90.i
+pseudopot.i: pseudopot.f90.i
 
-.PHONY : main.i
+.PHONY : pseudopot.i
 
 # target to preprocess a source file
-main.f90.i:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/main.f90.i
-.PHONY : main.f90.i
+pseudopot.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/pseudopot.f90.i
+.PHONY : pseudopot.f90.i
 
-main.s: main.f90.s
+pseudopot.s: pseudopot.f90.s
 
-.PHONY : main.s
+.PHONY : pseudopot.s
 
 # target to generate assembly for a file
-main.f90.s:
-	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/main.f90.s
-.PHONY : main.f90.s
+pseudopot.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/pseudopot.f90.s
+.PHONY : pseudopot.f90.s
 
 xc.o: xc.f90.o
 
@@ -461,46 +319,26 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-<<<<<<< HEAD
 	@echo "... rebuild_cache"
 	@echo "... gth.x"
-=======
-	@echo "... gth.x"
-	@echo "... rebuild_cache"
-	@echo "... testfft.x"
-	@echo "... test.x"
-	@echo "... free.x"
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
 	@echo "... density.o"
 	@echo "... density.i"
 	@echo "... density.s"
-	@echo "... energy.o"
-	@echo "... energy.i"
-	@echo "... energy.s"
 	@echo "... fft.o"
 	@echo "... fft.i"
 	@echo "... fft.s"
-	@echo "... gth_potential.o"
-	@echo "... gth_potential.i"
-	@echo "... gth_potential.s"
 	@echo "... gvect.o"
 	@echo "... gvect.i"
 	@echo "... gvect.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-<<<<<<< HEAD
-=======
 	@echo "... projectors.o"
 	@echo "... projectors.i"
 	@echo "... projectors.s"
-	@echo "... test_fft.o"
-	@echo "... test_fft.i"
-	@echo "... test_fft.s"
-	@echo "... test_projectors.o"
-	@echo "... test_projectors.i"
-	@echo "... test_projectors.s"
->>>>>>> 49974c06db85d3f26820264cf0cfc47e90f0ea14
+	@echo "... pseudopot.o"
+	@echo "... pseudopot.i"
+	@echo "... pseudopot.s"
 	@echo "... xc.o"
 	@echo "... xc.i"
 	@echo "... xc.s"
