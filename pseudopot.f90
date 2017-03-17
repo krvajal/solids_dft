@@ -71,13 +71,16 @@ elemental real(dp) function pseudo_pot_short(this, k) result(retval)
 
     params = this%params
     chi =  params%chi
-    if(k /= 0) then
+    ! when computing it as part of the local
+    ! part of the pseudopot then it should be zero
+    ! but for the energy it should not be zero
+    ! if(k /= 0) then
         retval = (2*pi)**(1.5_dp)* chi**3 /params%omega
         retval = retval * exp(-0.5_dp * (k * chi)**2)
         retval = retval * (params%c1 + params%c2 * (3 - (k*chi)**2))
-    else
-        retval = 0
-    endif
+    ! else
+        ! retval = 0
+    ! endif
 
 end function pseudo_pot_short
 
