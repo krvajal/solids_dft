@@ -14,12 +14,14 @@ real(dp),allocatable ::  FillingFactor(:)
 
 
 contains
-    subroutine init_density(Nx,Ny,Nz,numGVects, params)
+    subroutine init_density(Nx,Ny,Nz,num_atoms,numGVects, params)
         integer, intent(in) :: Nx,Ny,Nz,numGVects
-        type(GthPotParams) :: params
+        integer, intent(in) :: num_atoms
+        type(GthPotParams),intent(in) :: params(num_atoms)
         real(dp) :: chi, two_pi_over_l
+        integer :: i
 
-        chi = params%chi 
+     
         two_pi_over_l = 2 * pi / params%box_length
         allocate(density_r(0:Nx-1,0:Ny-1,0:Nz-1))
         allocate(density_g(0:Nx-1,0:Ny-1,0:Nz-1))
@@ -30,7 +32,12 @@ contains
         density_g = 0.0_dp
         allocate(FillingFactor(numGVects))
         FillingFactor = 0
-        core_density_g = - params%Zeff/params%omega * exp(-0.5 *(g_grid_norm * chi * two_pi_over_l)**2 )
+        core_density_g = 0
+        do i = 1,num_atoms
+            chi = params(i)%chi 
+            core_density_g = core_density_g  - params(i)%Zeff/params(i)%omega * exp(-0.5 *(g_grid_norm * chi * two_pi_over_l)**2 )    
+        enddo
+        
         !core_density_g = core_density_g * structure_factor
     end subroutine init_density
 
