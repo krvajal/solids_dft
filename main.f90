@@ -14,11 +14,11 @@ program autoconsistente
 
     character(len = 23) :: argument
     integer :: i, j, k, l
-    real(dp) ::length = 5.0_dp
+    real(dp),parameter ::length = 5.0_dp
     real(dp) :: ecut
-    real(dp),allocatable :: hamiltMatrix(:, :)
+    complex(dp),allocatable :: hamiltMatrix(:, :)
     real(dp),allocatable :: energies (:)
-    real(dp),allocatable :: psi_coeffs_g(:,:)
+    complex(dp),allocatable :: psi_coeffs_g(:,:)
     real(dp) :: omega
     complex(dp),allocatable :: vhartee_r(:,:,:)
 
@@ -56,7 +56,7 @@ contains
 
 subroutine init_system()
 
-    ecut = 20.3
+    ecut = 1.3
     
     !TODO: read params from file 
     call ggen(length, ecut)
@@ -96,11 +96,16 @@ subroutine khon_sham_loop()
         call fill_hamilt_matrix(pseudopotential,numGVects, g_indexes, hamiltMatrix)
         ! solve the eigenproblem
         call eigh(hamiltMatrix, energies,psi_coeffs_g)
+
+        ! print *, psi_coeffs_g(:,1)
+        !print *, matmul(hamiltMatrix, psi_coeffs_g(:,1)) - energies(1) * psi_coeffs_g(:,1)
+        
         ! do iter = 1,7
         !     print *, hamiltMatrix(iter,:)
         ! enddo
         
-         print *,"eigenvalue = ",energies(1)
+         print *,"eigenvalue = ",energies(1:3)
+         
          ! stop
         ! print *,matmul(hamiltMatrix,C(:,1))/C(:,1)
         
@@ -120,10 +125,10 @@ subroutine fill_hamilt_matrix(pseudpot,num_orbitals, KBasisSet, hamiltMatrix)
     type(gth_pp_t) :: pseudpot
     integer,intent(in) :: num_orbitals
     integer,intent(in) :: KBasisSet(3,num_orbitals)
-    real(dp), intent(out) :: hamiltMatrix(num_orbitals, num_orbitals)
-    
+    complex(dp), intent(out) :: hamiltMatrix(num_orbitals, num_orbitals)
+    real(dp) :: two_pi_over_a = 2*pi/length
     complex(dp),allocatable :: vxc_g (:,:,:), vxc_aux(:,:,:);
-    real(dp) :: vhartee
+    real(dp) :: vhartee, norm_delta_G
     integer :: deltaG(3) ! G - G'
     real(dp) :: delta_g2 ! delta g squared
     ! =================================
@@ -143,19 +148,16 @@ subroutine fill_hamilt_matrix(pseudpot,num_orbitals, KBasisSet, hamiltMatrix)
     ! density_g = density_g - 1/(omega*sqrt(4*pi))
     do i = 1, num_orbitals
         ! sum the kinetic energy, this term does not change and can be precomputed
-        hamiltMatrix(i,i) = sum( (2* pi/length * KBasisSet(:,i))**2) /2 !kinetic energy diagonal term
+        hamiltMatrix(i,i) = sum( (two_pi_over_a* KBasisSet(:,i))**2) /2 !kinetic energy diagonal term
         ! add the pseudopotential
 
         do j = 1, num_orbitals
 
             deltaG = KBasisSet(:,i) - KBasisSet(:,j)
-            hamiltMatrix(i,j) = hamiltMatrix(i,j) + &
-                                pseudpot%local(norm2(deltaG * 2*pi/length))
+            norm_delta_G = norm2(deltaG* two_pi_over_a)
+    
             
-
-            ! add the vxc
-            
-            delta_g2 = sum(deltaG**2)
+            delta_g2 = sum((deltaG * two_pi_over_a)**2)
             ! print *,"deltaG", deltaG
             ! print *, "Nx",Nx
             ! print *, "Ny",Ny
@@ -165,25 +167,43 @@ subroutine fill_hamilt_matrix(pseudpot,num_orbitals, KBasisSet, hamiltMatrix)
             if (deltaG(1) < 0) deltaG(1) =  deltaG(1) + Nx 
             if (deltaG(2) < 0) deltaG(2) =  deltaG(2) + Ny
             if (deltaG(3) < 0) deltaG(3) = deltaG(3) + Nz
-            hamiltMatrix(i,j) = hamiltMatrix(i,j) + vxc_g(deltaG(1),deltaG(2),deltaG(3))
-            
+
+
+            ! pseudopotential contribution
+            hamiltMatrix(i,j) = hamiltMatrix(i,j) + &
+                                pseudpot%local(norm_delta_G) * &
+                                 structure_factor(deltaG(1),deltaG(2), deltaG(3))
+
+
+
+
+            ! add the vxc
+
+             hamiltMatrix(i,j) = hamiltMatrix(i,j) + vxc_g(deltaG(1),deltaG(2),deltaG(3))
+            ! 
 
             !==================================================================
             ! Hartree term
             !================================================================
             if (i /= j) then
 
-                vhartee = density_g(deltaG(1),deltaG(2),deltaG(3))* length**2 /( pi*delta_g2)
+                vhartee = density_g(deltaG(1),deltaG(2),deltaG(3))* 4 * pi /delta_g2
                 vhartee_r(deltaG(1),deltaG(2),deltaG(3)) = vhartee; !this is in reciprocal space
             
                 hamiltMatrix(i,j) = hamiltMatrix(i,j) + vhartee
+
             endif 
-            !=================================================================
-            ! upper part of matrix
+            
             
         enddo
     enddo
-
+    ! do  i = 1, numGVects
+    !     do j = 1, i -1
+    !         print *, hamiltMatrix(i,j) - conjg(hamiltMatrix(j,i))
+    !     enddo
+    ! enddo
+    ! stop
+    ! the hamiltonian is hermitic
     call fft_forward_3d(Nx,Ny,Nz,vhartee_r,vhartee_r)
     ! do i = 0,Nx-1
         ! print *, i,realpart(vhartee_r(0,0,i)),realpart(vhartee_r(0,i,0)),realpart(vhartee_r(i,0,0))
@@ -220,6 +240,7 @@ subroutine compute_total_energy(pseudopot)
             kinetic_energy = kinetic_energy +  FillingFactor(i)*(psi_coeffs_g(j,i)**2 *sum(g_indexes(:,j)**2))*0.5_dp
         enddo
     enddo
+
     kinetic_energy = kinetic_energy * fact**2
 
     exc_corr_energy  = 0
@@ -237,7 +258,7 @@ subroutine compute_total_energy(pseudopot)
     total_energy  = total_energy + exc_corr_energy
 
     ! compute the local pseudopotential energy    
-    pp_local_energy = omega*sum(pseudopot%short(g_grid_norm*fact)*conjg(density_g))
+    pp_local_energy = omega*sum(pseudopot%short(g_grid_norm*fact)*structure_factor*conjg(density_g))
 
     print '(A23 F15.8)', "pp_local_short_energy:", pp_local_energy
 
@@ -247,13 +268,15 @@ subroutine compute_total_energy(pseudopot)
     total_density_g = core_density_g + density_g
 
     hartree_energy = fact2 * sum(density_g*conjg(density_g)*(g_grid_norm_inv)**2)
-    ! print '(A23 F15.8)', "hartree_energy", hartree_energy
+    print '(A23 F15.8)', "hartree_energy", hartree_energy
 
     
     print *, "Electrostatic energy terms"
-
+    print  '(A23 F15.8)', "Local core energy", fact2 * sum((core_density_g)*conjg(core_density_g)*(g_grid_norm_inv)**2)
     electrostatic_energy = fact2 * sum((density_g + core_density_g)*conjg(core_density_g +  density_g)*(g_grid_norm_inv)**2)
     print '(A23 F15.4)', "total_density_energy", electrostatic_energy
+
+
 
     ! compute the self energy
     self_energy = pseudopot%params%zeff**2/(2*sqrt(pi) * pseudopot%params%chi )

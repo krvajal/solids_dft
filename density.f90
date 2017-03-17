@@ -12,6 +12,7 @@ complex(dp),allocatable :: density_g(:,:,:) !density in reciprocal space
 complex(dp),allocatable :: core_density_g(:,:,:), total_density_g(:,:,:)
 real(dp),allocatable ::  FillingFactor(:)
 
+
 contains
     subroutine init_density(Nx,Ny,Nz,numGVects, params)
         integer, intent(in) :: Nx,Ny,Nz,numGVects
@@ -24,37 +25,39 @@ contains
         allocate(density_g(0:Nx-1,0:Ny-1,0:Nz-1))
         allocate(core_density_g(0:Nx-1,0:Ny-1,0:Nz-1))
         allocate(total_density_g(0:Nx-1,0:Ny-1,0:Nz-1))
+
         density_r = 0.0_dp
         density_g = 0.0_dp
         allocate(FillingFactor(numGVects))
         FillingFactor = 0
         core_density_g = - params%Zeff/params%omega * exp(-0.5 *(g_grid_norm * chi * two_pi_over_l)**2 )
-
+        core_density_g = core_density_g * structure_factor
     end subroutine init_density
 
 
-    function layoutKIndexForFft(Nx,Ny,Nz,num_orbitals,C) result(retval)
-        integer :: num_orbitals, Nx,Ny,Nz
-        real(dp) :: C(num_orbitals)
-        complex(dp) ::  retval(0:Nx-1,0:Ny-1,0:Nz-1)
-        integer :: size , i
-        integer :: toI,toJ, toK
-        retval = 0.0 !init to zero
+function layoutKIndexForFft(Nx,Ny,Nz,num_orbitals,C) result(retval)
+!-----------------------------------------------------------    
+    integer :: num_orbitals, Nx,Ny,Nz
+    complex(dp) :: C(num_orbitals)
+    complex(dp) ::  retval(0:Nx-1,0:Ny-1,0:Nz-1)
+    integer :: size , i
+    integer :: toI,toJ, toK
+    retval = 0.0 !init to zero
 
-    
-        do i = 1, num_orbitals
-             toI = g_indexes(1,i)
-             if(toI < 0) toI = toI + Nx
-             toJ = g_indexes(2,i)
-             if(toJ < 0) toJ = toJ + Ny
-             toK = g_indexes(3,i)
-             if(toK < 0) toK = toK + Nz
-                !print *, toI,toJ,toK, C(i)
-             retval(toI,toJ,toK) = complex(C(i),0.0_dp)
-            ! print *,g_grid(:,toI,toJ,toK), g_indexes(:,i)     
-        enddo
-        ! ok, checkeado
-    end function layoutKIndexForFft
+
+    do i = 1, num_orbitals
+         toI = g_indexes(1,i)
+         if(toI < 0) toI = toI + Nx
+         toJ = g_indexes(2,i)
+         if(toJ < 0) toJ = toJ + Ny
+         toK = g_indexes(3,i)
+         if(toK < 0) toK = toK + Nz
+            !print *, toI,toJ,toK, C(i)
+         retval(toI,toJ,toK) = C(i)
+        ! print *,g_grid(:,toI,toJ,toK), g_indexes(:,i)     
+    enddo
+    ! ok, checkeado
+end function layoutKIndexForFft
     !---------------------------------------------
     ! compute the system density
     ! in real and complex espace
@@ -66,7 +69,7 @@ contains
     subroutine compute_density(N,C,omega)
         implicit none
         integer,intent(in) :: N !number of G vectors
-        real(dp) :: C(N,N)  ! the wave functions expansion coeffs, C(:,j) for thr jth one
+        complex(dp) :: C(N,N)  ! the wave functions expansion coeffs, C(:,j) for thr jth one
         real(dp) :: omega   ! the unit cell volumen
 
         real(dp),allocatable :: Nj(:,:,:) 
@@ -98,12 +101,14 @@ contains
         density_g = density_g/(Nx*Ny*Nz)    
     end subroutine compute_density
 
-    subroutine to_linear_layout(Nx,Ny,Nz, in, out)
-        integer, intent(in) :: Nx,Ny,Nz
-        complex(dp), intent(in) :: in(Nx,Ny,Nz)
-        complex(dp), intent(out) :: out(Nx,Ny,Nz)
 
-
-    end subroutine to_linear_layout
+!--------------------------------------
+! map to linear layout, unimplemented
+subroutine to_linear_layout(Nx,Ny,Nz, in, out)
+!----------------------------------------
+    integer, intent(in) :: Nx,Ny,Nz
+    complex(dp), intent(in) :: in(Nx,Ny,Nz)
+    complex(dp), intent(out) :: out(Nx,Ny,Nz)
+end subroutine to_linear_layout
 
 end module density

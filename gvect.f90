@@ -5,14 +5,15 @@ module gvect
 implicit none
 private 
 public g_indexes, numGVects, ggen, ni,nj,nk, Nx,Ny,Nz, g_grid, g_grid_norm, g_grid_norm_inv
-
+public structure_factor
 integer :: Nx, Ny, Nz ! number of grid points in x, y and z directions
 integer,allocatable :: g_indexes(:,:), g_grid(:,:,:,:)
 real(dp),allocatable :: g_grid_norm(:,:,:), g_grid_norm_inv(:,:,:) ! indexes of g vectors in a linear array
 integer :: numGVects  = 0 
 integer :: ni,nj,nk
 real(dp) :: ni_d, nj_d, nk_d
-    
+complex(dp), allocatable :: structure_factor(:,:,:) 
+real(dp) :: atom_pos(3)   
 contains 
 ! ---------------------------------
 subroutine ggen(a, eneryCutoff)
@@ -27,6 +28,10 @@ subroutine ggen(a, eneryCutoff)
     real(dp) :: energy
     integer :: maxNumGVects
     
+ !temporary
+    atom_pos =  0![0.5*a, 0.2*a,0.0_dp]
+ !---------
+
     numGVects = 0
 
     twoPiOverA2 = (2 * pi / a)**2
@@ -75,6 +80,9 @@ subroutine ggen(a, eneryCutoff)
     allocate (g_grid_norm_inv(0:Nx-1,0:Ny-1,0:Nz-1))
     g_grid_norm_inv = 0
     g_grid = 0
+
+    allocate (structure_factor(0:Nx-1,0:Ny-1,0:Nz-1))
+
     do i = 0,Nx-1
         do j = 0, Ny -1
             do k = 0, Nz - 1   
@@ -85,6 +93,10 @@ subroutine ggen(a, eneryCutoff)
                 kk =  k
                 if (kk > Nz/2) kk = kk - Nz
                 g_grid(:,i,j,k) = (/ ii, jj, kk/)
+
+                !compute the strucure factor for one atom
+                structure_factor(i,j,k) = exp(- complex(0.0,1.0) * twoPiOverA2 * dot_product(g_grid(:,i,j,k), atom_pos))
+
                 g_grid_norm(i,j,k) = norm2([real(ii), real(jj), real(kk)])
                 if (g_grid_norm(i,j,k) /= 0 ) then
                     ! excludes g = 0s
@@ -93,8 +105,6 @@ subroutine ggen(a, eneryCutoff)
             enddo
         enddo
     enddo
-
-
 
 end subroutine ggen
 
