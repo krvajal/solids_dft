@@ -24,7 +24,7 @@ link_directories(/usr/local/lib)
 
 
 
-add_executable(gth.x main.f90 pseudopot.f90 projectors.f90 gvect.f90 fft.f90 density.f90 xc.f90)
+add_executable(gth.x main.f90 pseudopot.f90 projectors.f90 gvect.f90 fft.f90 density.f90 xc.f90 iondata.f90)
 
 
 target_link_libraries(gth.x fortran_utils)

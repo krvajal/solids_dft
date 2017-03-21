@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_Fortran
   "/home/miguel/Desktop/autoconsistente/density.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/density.f90.o"
   "/home/miguel/Desktop/autoconsistente/fft.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/fft.f90.o"
   "/home/miguel/Desktop/autoconsistente/gvect.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/gvect.f90.o"
+  "/home/miguel/Desktop/autoconsistente/iondata.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/iondata.f90.o"
   "/home/miguel/Desktop/autoconsistente/main.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/main.f90.o"
   "/home/miguel/Desktop/autoconsistente/projectors.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/projectors.f90.o"
   "/home/miguel/Desktop/autoconsistente/pseudopot.f90" "/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir/pseudopot.f90.o"

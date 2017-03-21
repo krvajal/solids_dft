@@ -8,6 +8,8 @@ CMakeFiles/gth.x.dir/fft.f90.o
  /usr/local/include/fftw3.f03
 CMakeFiles/gth.x.dir/gvect.f90.o
  /home/miguel/Desktop/autoconsistente/gvect.f90
+CMakeFiles/gth.x.dir/iondata.f90.o
+ /home/miguel/Desktop/autoconsistente/iondata.f90
 CMakeFiles/gth.x.dir/main.f90.o
  /home/miguel/Desktop/autoconsistente/main.f90
 CMakeFiles/gth.x.dir/projectors.f90.o

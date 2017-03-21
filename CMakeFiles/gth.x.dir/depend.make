@@ -24,12 +24,21 @@ CMakeFiles/gth.x.dir/fft.f90.o.provides.build:
 CMakeFiles/gth.x.dir/build: CMakeFiles/gth.x.dir/fft.f90.o.provides.build
 
 CMakeFiles/gth.x.dir/gvect.f90.o: /home/miguel/fortran-utils/src/constants.mod
+CMakeFiles/gth.x.dir/gvect.f90.o.requires: CMakeFiles/gth.x.dir/iondata.mod.proxy
+CMakeFiles/gth.x.dir/gvect.f90.o: CMakeFiles/gth.x.dir/iondata.mod.stamp
 CMakeFiles/gth.x.dir/gvect.f90.o: /home/miguel/fortran-utils/src/types.mod
 CMakeFiles/gth.x.dir/gvect.mod.proxy: CMakeFiles/gth.x.dir/gvect.f90.o.provides
 CMakeFiles/gth.x.dir/gvect.f90.o.provides.build:
 	$(CMAKE_COMMAND) -E cmake_copy_f90_mod gvect CMakeFiles/gth.x.dir/gvect.mod.stamp GNU
 	$(CMAKE_COMMAND) -E touch CMakeFiles/gth.x.dir/gvect.f90.o.provides.build
 CMakeFiles/gth.x.dir/build: CMakeFiles/gth.x.dir/gvect.f90.o.provides.build
+
+CMakeFiles/gth.x.dir/iondata.f90.o: /home/miguel/fortran-utils/src/types.mod
+CMakeFiles/gth.x.dir/iondata.mod.proxy: CMakeFiles/gth.x.dir/iondata.f90.o.provides
+CMakeFiles/gth.x.dir/iondata.f90.o.provides.build:
+	$(CMAKE_COMMAND) -E cmake_copy_f90_mod iondata CMakeFiles/gth.x.dir/iondata.mod.stamp GNU
+	$(CMAKE_COMMAND) -E touch CMakeFiles/gth.x.dir/iondata.f90.o.provides.build
+CMakeFiles/gth.x.dir/build: CMakeFiles/gth.x.dir/iondata.f90.o.provides.build
 
 CMakeFiles/gth.x.dir/main.f90.o: /home/miguel/fortran-utils/src/constants.mod
 CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/density.mod.proxy
@@ -38,6 +47,8 @@ CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/fft.mod.proxy
 CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/fft.mod.stamp
 CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/gvect.mod.proxy
 CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/gvect.mod.stamp
+CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/iondata.mod.proxy
+CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/iondata.mod.stamp
 CMakeFiles/gth.x.dir/main.f90.o: /home/miguel/fortran-utils/src/linalg.mod
 CMakeFiles/gth.x.dir/main.f90.o.requires: CMakeFiles/gth.x.dir/pseudopot.mod.proxy
 CMakeFiles/gth.x.dir/main.f90.o: CMakeFiles/gth.x.dir/pseudopot.mod.stamp

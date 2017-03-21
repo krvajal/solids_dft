@@ -8,14 +8,14 @@ use fft
 implicit none
 private  
 
-public exc, exc_g, compute_exc,init_xc, vxc_r, compute_vxc
+public exc, exc_g, compute_exc,init_xc, vxc_r, compute_vxc, vxc_g
 
 complex(dp),allocatable :: exc_g(:,:,:),exc(:,:,:)
-
+complex(dp),allocatable :: vxc_g (:,:,:)
 real(dp),allocatable :: num(:,:,:), dnum(:,:,:),den(:,:,:),dden(:,:,:)
 
 
-real(dp),allocatable :: vxc_r(:,:,:) !   xc potential in real space
+complex(dp),allocatable :: vxc_r(:,:,:) !   xc potential in real space
 real(dp),allocatable :: exc_(:,:,:)
 real(dp),allocatable :: rs(:,:,:)
 real(dp) ::  a(4) = [0.4581652932831429, &
@@ -43,6 +43,7 @@ subroutine init_xc()
     allocate(dden(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(rs(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(vxc_r(0:Nx-1,0:Ny-1,0:Nz-1))
+    allocate(vxc_g(0:Nx-1,0:Ny-1,0:Nz-1))
 
 end subroutine init_xc
 
@@ -98,12 +99,13 @@ subroutine compute_vxc()
         den = den + b(i)*Rs**(i+3)
         dden = dden + b(i)*(i+3)*Rs**(i+2)
     enddo
-    vxc_r = (den*dnum-num*dden)/den**2*Rs**4/3.0_dp
+    vxc_r = (den*dnum-num*dden)/den**2*rs**4/3.0_dp
   
-    ! dvxc_drs = - (num + dnum * exc)/den
-    
-    ! vxc_r = exc - 1.0_dp/3.0_dp * rs * dvxc_drs
-    ! vxc_r =  -dvxc_drs*rs/3
+
+
+    call fft_backward_3d(Nx,Ny,Nz, vxc_r, vxc_g)
+    vxc_g = vxc_g/(Nx*Ny*Nz)
+
 
 end subroutine compute_vxc
 

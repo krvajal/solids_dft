@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/gth.x.dir/fft.f90.o"
   "CMakeFiles/gth.x.dir/density.f90.o"
   "CMakeFiles/gth.x.dir/xc.f90.o"
+  "CMakeFiles/gth.x.dir/iondata.f90.o"
   "gth.x.pdb"
   "gth.x"
 )

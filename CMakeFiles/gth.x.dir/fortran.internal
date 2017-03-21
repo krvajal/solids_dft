@@ -3,6 +3,7 @@ provides
  density
  fft
  gvect
+ iondata
  projectors
  pseudopot
  xc

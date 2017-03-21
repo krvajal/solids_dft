@@ -1,6 +1,7 @@
 module gvect
     use types
     use constants    
+    use iondata
 implicit none
 private 
 public g_indexes, numGVects, ggen, ni,nj,nk, Nx,Ny,Nz, g_grid, g_grid_norm, g_grid_norm_inv
@@ -11,8 +12,8 @@ real(dp),allocatable :: g_grid_norm(:,:,:), g_grid_norm_inv(:,:,:) ! indexes of 
 integer :: numGVects  = 0 
 integer :: ni,nj,nk
 real(dp) :: ni_d, nj_d, nk_d
-complex(dp), allocatable :: structure_factor(:,:,:) 
-real(dp) :: atom_pos(3)   
+complex(dp), allocatable :: structure_factor(:,:,:,:) 
+ 
 contains 
 ! ---------------------------------
 subroutine ggen(a, eneryCutoff)
@@ -21,15 +22,13 @@ subroutine ggen(a, eneryCutoff)
     !----------------------------------
     real(dp), intent(in) :: a, eneryCutoff
 
-   integer :: num2,num3,num5
+     integer :: num2,num3,num5, ion_idx
     integer :: i,j,k, ii, jj, kk
     real(dp) :: twoPiOverA, twoPiOverA2 
     real(dp) :: energy
     integer :: maxNumGVects
     
- !temporary
-    atom_pos = [0.0_dp,1.0_dp,0.0_dp]
- !---------
+
 
     numGVects = 0
     twoPiOverA = (2*pi/a)
@@ -80,7 +79,7 @@ subroutine ggen(a, eneryCutoff)
     g_grid_norm_inv = 0
     g_grid = 0
 
-    allocate (structure_factor(0:Nx-1,0:Ny-1,0:Nz-1))
+    allocate (structure_factor(num_ions,0:Nx-1,0:Ny-1,0:Nz-1))
     structure_factor = 0
     do i = 0,Nx-1
         do j = 0, Ny -1
@@ -94,7 +93,11 @@ subroutine ggen(a, eneryCutoff)
                 g_grid(:,i,j,k) = (/ ii, jj, kk/)
 
                 !compute the strucure factor for one atom
-                structure_factor(i,j,k) = exp(complex(0.0,1.0) * twoPiOverA * dot_product(g_grid(:,i,j,k), atom_pos))
+                do ion_idx = 1, num_ions
+                    structure_factor(ion_idx,i,j,k) = exp(complex(0.0,1.0) * twoPiOverA * &
+                        dot_product(g_grid(:,i,j,k), ion_pos(ion_idx,:)))
+                enddo
+                
                 ! print *, ii,jj,kk, structure_factor(i,j,k)
                 g_grid_norm(i,j,k) = norm2([real(ii), real(jj), real(kk)])
                 if (g_grid_norm(i,j,k) /= 0 ) then

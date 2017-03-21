@@ -12,6 +12,10 @@ FILE(REMOVE
   "GVECT.mod"
   "CMakeFiles/gth.x.dir/gvect.mod.stamp"
 
+  "iondata.mod"
+  "IONDATA.mod"
+  "CMakeFiles/gth.x.dir/iondata.mod.stamp"
+
   "projectors.mod"
   "PROJECTORS.mod"
   "CMakeFiles/gth.x.dir/projectors.mod.stamp"

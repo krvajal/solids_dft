@@ -14,15 +14,16 @@ real(dp),allocatable ::  FillingFactor(:)
 
 
 contains
-    subroutine init_density(Nx,Ny,Nz,num_atoms,numGVects, params)
+    subroutine init_density(Nx,Ny,Nz,num_atoms,numGVects, box_length, params)
         integer, intent(in) :: Nx,Ny,Nz,numGVects
         integer, intent(in) :: num_atoms
+        real(dp) :: box_length
         type(GthPotParams),intent(in) :: params(num_atoms)
         real(dp) :: chi, two_pi_over_l
         integer :: i
 
      
-        two_pi_over_l = 2 * pi / params%box_length
+        two_pi_over_l = 2 * pi / box_length
         allocate(density_r(0:Nx-1,0:Ny-1,0:Nz-1))
         allocate(density_g(0:Nx-1,0:Ny-1,0:Nz-1))
         allocate(core_density_g(0:Nx-1,0:Ny-1,0:Nz-1))
@@ -35,10 +36,11 @@ contains
         core_density_g = 0
         do i = 1,num_atoms
             chi = params(i)%chi 
-            core_density_g = core_density_g  - params(i)%Zeff/params(i)%omega * exp(-0.5 *(g_grid_norm * chi * two_pi_over_l)**2 )    
+            core_density_g = core_density_g  - params(i)%Zeff/params(i)%omega&
+                             * exp(-0.5 *(g_grid_norm * chi * two_pi_over_l)**2 ) *structure_factor(i,:,:,:)
         enddo
         
-        !core_density_g = core_density_g * structure_factor
+        
     end subroutine init_density
 
 
@@ -97,8 +99,7 @@ end function layoutKIndexForFft
             call fft_forward_3d(Nx,Ny,Nz,psi_k,psi_r)     ! exp(1)  
 
             psi_r = psi_r/sqrt(omega)
-            val =  sum(abs(psi_r)**2)*omega
-        
+    
             density_r =  density_r + FillingFactor(i)*psi_r*conjg(psi_r)
         
         enddo

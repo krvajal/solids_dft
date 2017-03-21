@@ -7,7 +7,7 @@ program autoconsistente
     use gvect 
     use fft
     use xc
-
+    use iondata
     use density
     implicit none
     
@@ -21,26 +21,16 @@ program autoconsistente
     complex(dp),allocatable :: psi_coeffs_g(:,:)
     real(dp) :: omega
     complex(dp),allocatable :: vhartee_r(:,:,:)
-    complex(dp),allocatable :: vxc_g (:,:,:), vxc_aux(:,:,:);
-    type(GthPotParams) :: paramsHidrogen
+    
+
+    type(GthPotParams),allocatable :: pseudopot_params(:)
     real(dp) :: norm
     integer :: iter
     type(gth_pp_t) :: pseudopotential
 
 
     omega = length**3
-    ! hidrogen parameters
-    ! =================================
-    paramsHidrogen%c1 = -4.0663326_dp
-    paramsHidrogen%c2 = 0.6778322_dp
-    paramsHidrogen%chi = 0.2_dp
-    paramsHidrogen%Zeff = 1 
-    paramsHidrogen%omega = omega ! cell with edge length of 5.0 a.u.
-    paramsHidrogen%box_length = length
-   ! =================================
-
-    
-
+  
     call init_system()
     print  *,"Starting sc loop"
     call khon_sham_loop()
@@ -55,22 +45,43 @@ program autoconsistente
 contains
 
 subroutine init_system()
-
-    ecut = 1.3
     
+    type(GthPotParams):: paramsHidrogen
+    
+    ecut = 1.3
+
+    ! init ion positions 
+    call init_ions()
+    allocate(pseudopot_params(num_ions))
+
+      ! hidrogen parameters
+    ! =================================
+    paramsHidrogen%c1 = -4.0663326_dp
+    paramsHidrogen%c2 = 0.6778322_dp
+    paramsHidrogen%chi = 0.2_dp
+    paramsHidrogen%Zeff = 1 
+    paramsHidrogen%omega = omega ! cell with edge length of 5.0 a.u.
+    paramsHidrogen%box_length = length
+   ! =================================
+
+    pseudopot_params = paramsHidrogen
+    pseudopotential%params= paramsHidrogen
+
+
     !TODO: read params from file 
     call ggen(length, ecut)
+
     allocate(vhartee_r(0:Nx-1,0:Ny-1,0:Nz-1))
     allocate(hamiltMatrix(numGVects,numGVects))
     allocate(energies(numGVects))
     allocate(psi_coeffs_g(numGVects,numGVects))
-    allocate(vxc_g(0:Nx-1,0:Ny-1,0:Nz-1))
-    allocate(vxc_aux(0:Nx-1,0:Ny-1,0:Nz-1))
+
+
 
     print *, "GridDim:", Nx,Ny,Nz
     print *, "num_orbitals:", numGVects
 
-    call init_density(Nx,Ny,Nz,numGVects,paramsHidrogen)
+    call init_density(Nx,Ny,Nz,num_ions, numGVects, length, pseudopot_params)
 
     FillingFactor(1) = 1 ! only one atom
     call init_xc()
@@ -79,13 +90,12 @@ end subroutine init_system
 
 subroutine khon_sham_loop()
 
-   
+    integer :: i, j, k
     density_g = 0.d0
     density_g(0,0,0) = 1.d0
     norm =  Omega*density_g(0,0,0)
 
-    pseudopotential%params = paramsHidrogen
-
+  
     print *, "density norm", norm
     density_g = density_g/norm
 
@@ -109,8 +119,26 @@ subroutine khon_sham_loop()
          
          ! stop
         ! print *,matmul(hamiltMatrix,C(:,1))/C(:,1)
+
+       call compute_density (numGVects, psi_coeffs_g,omega)
+      ! do i = 0, Nx -1
+      !       do j = 0, Ny -1
+      !           do k = 0, Nz -1
+      !               print '(I4 I4 I4 F10.5)',i,j,k, realpart(density_g(i,j,k))
+      !           enddo
+      !       enddo 
+      !   enddo
+        do i =1, numGVects
+            print '(7F10.2)', aimag(hamiltMatrix(i,:))
+        enddo
+        print *, "END"
+         do i =1, numGVects
+            print '(7F10.2)', realpart(hamiltMatrix(i,:))
+        enddo
         
-        call compute_density (numGVects, psi_coeffs_g,omega)
+        
+
+
         call compute_total_energy(pseudopotential)
        ! call compute_kinetic_energy(numGVects, FillingFactor, psi_coeffs_g,g_indexes,length)    
        
@@ -128,20 +156,19 @@ subroutine fill_hamilt_matrix(pseudpot,num_orbitals, KBasisSet, hamiltMatrix)
     integer,intent(in) :: KBasisSet(3,num_orbitals)
     complex(dp), intent(out) :: hamiltMatrix(num_orbitals, num_orbitals)
     real(dp) :: two_pi_over_a = 2*pi/length
-   
-    real(dp) :: vhartee, norm_delta_G
+    integer :: ion_idx
+    complex(dp) :: vhartee
+    real(dp) :: norm_delta_G
     integer :: delta_g_idx(3) ! G - G'
     real(dp) :: delta_g2 ! delta g squared
     ! =================================
+    
+
     call compute_vxc()
     vhartee_r = 0;
 
 
-    vxc_aux = CMPLX(vxc_r, kind=dp)
-
-    call fft_forward_3d(Nx,Ny,Nz, vxc_aux, vxc_g)
-    vxc_g = vxc_g/(Nx*Ny*Nz)
-
+    
    
     hamiltMatrix = 0 !init to zero the hamiltonian matrix
     ! density_g = density_g - 1/(omega*sqrt(4*pi))
@@ -166,12 +193,12 @@ subroutine fill_hamilt_matrix(pseudpot,num_orbitals, KBasisSet, hamiltMatrix)
             if (delta_g_idx(2) < 0) delta_g_idx(2) =  delta_g_idx(2) + Ny
             if (delta_g_idx(3) < 0) delta_g_idx(3) = delta_g_idx(3) + Nz
 
-
+            do ion_idx = 1, num_ions
             ! pseudopotential contribution
-            hamiltMatrix(i,j) = hamiltMatrix(i,j) + &
+                hamiltMatrix(i,j) = hamiltMatrix(i,j) + &
                                 pseudpot%local(norm_delta_G) * &
-                                 structure_factor(delta_g_idx(1),delta_g_idx(2), delta_g_idx(3))
-
+                                 structure_factor(ion_idx,delta_g_idx(1),delta_g_idx(2), delta_g_idx(3))
+            enddo
 
 
 
@@ -219,7 +246,7 @@ subroutine compute_total_energy(pseudopot)
     real(dp) :: hartree_energy
     real(dp) :: self_energy, electrostatic_energy
     real(dp) :: local_core_energy
-    integer :: j, i = 1
+    integer :: j, i, ion_idx
     real(dp) :: fact,fact2
 
 
@@ -256,7 +283,12 @@ subroutine compute_total_energy(pseudopot)
     total_energy  = total_energy + exc_corr_energy
 
     ! compute the local pseudopotential energy    
-    pp_local_energy = omega*sum(pseudopot%short(g_grid_norm*fact)*structure_factor*conjg(density_g))
+     pp_local_energy = 0
+    do  ion_idx = 1, num_ions
+        pp_local_energy =  pp_local_energy + &
+            omega*sum(pseudopot%short(g_grid_norm*fact)*structure_factor(ion_idx,:,:,:)*conjg(density_g))
+    enddo
+    
 
     print '(A23 F15.8 A23)', "pp_local_short_energy:", pp_local_energy,  "ok!"
 

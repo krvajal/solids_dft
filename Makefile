@@ -204,6 +204,33 @@ gvect.f90.s:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/gvect.f90.s
 .PHONY : gvect.f90.s
 
+iondata.o: iondata.f90.o
+
+.PHONY : iondata.o
+
+# target to build an object file
+iondata.f90.o:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/iondata.f90.o
+.PHONY : iondata.f90.o
+
+iondata.i: iondata.f90.i
+
+.PHONY : iondata.i
+
+# target to preprocess a source file
+iondata.f90.i:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/iondata.f90.i
+.PHONY : iondata.f90.i
+
+iondata.s: iondata.f90.s
+
+.PHONY : iondata.s
+
+# target to generate assembly for a file
+iondata.f90.s:
+	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/iondata.f90.s
+.PHONY : iondata.f90.s
+
 main.o: main.f90.o
 
 .PHONY : main.o
@@ -330,6 +357,9 @@ help:
 	@echo "... gvect.o"
 	@echo "... gvect.i"
 	@echo "... gvect.s"
+	@echo "... iondata.o"
+	@echo "... iondata.i"
+	@echo "... iondata.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
