@@ -1,3 +1,0 @@
-/home/miguel/Desktop/autoconsistente/CMakeFiles/edit_cache.dir
-/home/miguel/Desktop/autoconsistente/CMakeFiles/rebuild_cache.dir
-/home/miguel/Desktop/autoconsistente/CMakeFiles/gth.x.dir
