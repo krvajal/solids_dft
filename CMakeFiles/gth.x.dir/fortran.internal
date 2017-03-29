@@ -1,8 +1,0 @@
-# The fortran modules provided by this target.
-provides
- density
- fft
- gvect
- projectors
- pseudopot
- xc
