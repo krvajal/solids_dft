@@ -4,6 +4,90 @@
 		"selected_items":
 		[
 			[
+				"vx",
+				"vxc_g"
+			],
+			[
+				"num",
+				"numGVects"
+			],
+			[
+				"ion",
+				"ion_pos"
+			],
+			[
+				"real",
+				"realpart"
+			],
+			[
+				"e",
+				"enddo"
+			],
+			[
+				"DEN",
+				"density_r"
+			],
+			[
+				"id",
+				"ion_idx"
+			],
+			[
+				"para",
+				"paramsHidrogen"
+			],
+			[
+				"pse",
+				"pseudopotential"
+			],
+			[
+				"nu",
+				"num_ions"
+			],
+			[
+				"al",
+				"allocate"
+			],
+			[
+				"tw",
+				"twoPiOverA"
+			],
+			[
+				"over",
+				"overlap_energy"
+			],
+			[
+				"ps",
+				"psi_coeffs_g"
+			],
+			[
+				"ha",
+				"hamiltMatrix"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"delta",
+				"deltaG"
+			],
+			[
+				"nor",
+				"norm_delta_G"
+			],
+			[
+				"str",
+				"structure_factor"
+			],
+			[
+				"comp",
+				"complex"
+			],
+			[
+				"pseud",
+				"pseudopot"
+			],
+			[
 				"f",
 				"file_exclude_patterns"
 			],
@@ -28,24 +112,12 @@
 				"g_grid_norm_inv"
 			],
 			[
-				"ha",
-				"hartree_energy"
-			],
-			[
 				"toa",
 				"total_density_g"
 			],
 			[
-				"pse",
-				"pseudopot"
-			],
-			[
 				"den",
 				"density_g"
-			],
-			[
-				"para",
-				"paramsHidrogen"
 			],
 			[
 				"g",
@@ -156,10 +228,6 @@
 				"density_r"
 			],
 			[
-				"nu",
-				"num5"
-			],
-			[
 				"Fi",
 				"FillFac"
 			],
@@ -180,14 +248,6 @@
 				"psi_coeffs_g"
 			],
 			[
-				"e",
-				"energies"
-			],
-			[
-				"al",
-				"allocatable"
-			],
-			[
 				"Co",
 				"CoulombGrid"
 			],
@@ -200,16 +260,8 @@
 				"vxc_g"
 			],
 			[
-				"vx",
-				"vxc_aux"
-			],
-			[
 				"No",
 				"NtotalR"
-			],
-			[
-				"comp",
-				"computeVxc"
 			],
 			[
 				"Nt",
@@ -462,58 +514,6 @@
 			[
 				"shaders",
 				"shadersCode"
-			],
-			[
-				"Ave",
-				"AveragePotential"
-			],
-			[
-				"le",
-				"LenghtX12"
-			],
-			[
-				"Le",
-				"LenghtX12"
-			],
-			[
-				"LE",
-				"LenghtX1"
-			],
-			[
-				"He",
-				"HelioLocalEnergy"
-			],
-			[
-				"Hel",
-				"HelioLocalEnergyFunctor"
-			],
-			[
-				"HE",
-				"HelioLocalEnergy"
-			],
-			[
-				"func",
-				"function"
-			],
-			[
-				"L",
-				"LenghtX2"
-			],
-			[
-				"hE",
-				"HelioGuidedForce"
-			],
-			[
-				"Helo",
-				"HelioGuidedForce"
-			],
-			[
-				"Len",
-				"LenghtX1"
-			],
-			[
-				"len",
-				"LenghtX1"
 			]
 		]
 	},
@@ -731,7 +731,22 @@
 	},
 	"file_history":
 	[
+		"/home/miguel/Desktop/autoconsistente/gvect.f90",
+		"/home/miguel/Desktop/autoconsistente/CMakeCache.txt",
+		"/home/miguel/Desktop/autoconsistente/CMakeLists.txt",
+		"/home/miguel/Desktop/autoconsistente/tester.f90",
+		"/home/miguel/Desktop/autoconsistente/xc.f90",
+		"/home/miguel/Desktop/autoconsistente/density.f90",
+		"/home/miguel/Desktop/autoconsistente/iondata.f90",
+		"/home/miguel/Desktop/autoconsistente/README.md",
+		"/home/miguel/Desktop/autoconsistente/freeparticle.f90",
+		"/home/miguel/Desktop/autoconsistente/TODO.md",
 		"/home/miguel/Desktop/autoconsistente/.gitignore",
+		"/home/miguel/Desktop/autoconsistente/.git/config",
+		"/home/miguel/Desktop/autoconsistente/pseudopot.f90",
+		"/home/miguel/Desktop/autoconsistente/autoconsistente.sublime-project",
+		"/home/miguel/fortran-utils/src/linalg.f90",
+		"/home/miguel/Desktop/autoconsistente/main.f90",
 		"/home/miguel/testnorm2.f90",
 		"/home/miguel/Dropbox/dmrg/dmrgpp/src/DmrgDriver2.cpp",
 		"/home/miguel/Dropbox/Maestria/thijssen-codes/ch6/pseudo/selfcons/calcul.f95",
@@ -742,7 +757,6 @@
 		"/home/miguel/Dropbox/Maestria/thijssen-codes/ch6/pseudo/selfcons/excorr.f90",
 		"/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/test_fft.f90",
 		"/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/fft.f90",
-		"/home/miguel/fortran-utils/src/linalg.f90",
 		"/home/miguel/Dropbox/Maestria/codigos/q-e/Modules/gvecs.f90",
 		"/home/miguel/Dropbox/Maestria/codigos/dft/freeparticle/freeparticle.f90",
 		"/home/miguel/WORK/krvajalmiguelangel.github.io/sass/styles.scss",
@@ -814,6 +828,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"vxc_g",
+			"hamiltMatrix",
+			"ham",
+			"psi_coeffs_g",
+			"struc",
+			"g_grid_norm",
+			"g_grid",
+			"deltaG",
+			"delta_g2",
+			"zeigh_simple",
+			"zeig",
 			"hartree",
 			"hartee",
 			"g_grid_norm_inv",
@@ -930,15 +955,7 @@
 			"(:loc)",
 			"(:loc) ",
 			"compute_vc",
-			"CUDA",
-			":",
-			"real",
-			"evaluate_Vx",
-			"./",
-			"energy0",
-			"b",
-			":: ",
-			"curand_m"
+			"CUDA"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1005,16 +1022,60 @@
 		"selected_items":
 		[
 			[
+				"git",
+				".gitignore"
+			],
+			[
+				"tod",
+				"TODO.md"
+			],
+			[
+				"ion",
+				"iondata.f90"
+			],
+			[
 				"main",
 				"main.f90"
+			],
+			[
+				"xc",
+				"xc.f90"
 			],
 			[
 				"dens",
 				"density.f90"
 			],
 			[
+				"gv",
+				"gvect.f90"
+			],
+			[
+				"gg",
+				".gitignore"
+			],
+			[
+				"cma",
+				"CMakeLists.txt"
+			],
+			[
+				"mac",
+				"CMakeCache.txt"
+			],
+			[
+				"g",
+				"gvect.f90"
+			],
+			[
+				"densi",
+				"density.f90"
+			],
+			[
 				"mai",
 				"main.f90"
+			],
+			[
+				"seu",
+				"pseudopot.f90"
 			],
 			[
 				"ma",
@@ -1171,7 +1232,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 293.0,
 	"status_bar_visible": true,
 	"template_settings":

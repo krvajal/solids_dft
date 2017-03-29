@@ -2,16 +2,12 @@ cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 
 enable_language(Fortran)
 
-project(freeparticle)
+project(dft_solid)
+set(PROJECT_URL "https://github.com/krvajalmiguelangel/solids_dft")
 
-
-
-
-
-
-include_directories(~/fortran-utils/src)
+include_directories(fortran-utils/src)
 include_directories(/usr/local/include)
-link_directories(~/fortran-utils/src)
+link_directories(fortran-utils/src)
 
 add_definitions(-Wno-implicit-interface)
 
@@ -22,7 +18,8 @@ set(SRC_FILES freeparticle.f90)
 
 link_directories(/usr/local/lib)
 
-
+add_subdirectory(fortran-utils)
+add_subdirectory(json-fortran)
 
 add_executable(gth.x main.f90 pseudopot.f90 projectors.f90 gvect.f90 fft.f90 density.f90 xc.f90 iondata.f90)
 

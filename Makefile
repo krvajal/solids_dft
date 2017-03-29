@@ -123,6 +123,500 @@ gth.x/fast:
 	$(MAKE) -f CMakeFiles/gth.x.dir/build.make CMakeFiles/gth.x.dir/build
 .PHONY : gth.x/fast
 
+#=============================================================================
+# Target rules for targets named fortran_utils
+
+# Build rule for target.
+fortran_utils: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fortran_utils
+.PHONY : fortran_utils
+
+# fast build rule for target.
+fortran_utils/fast:
+	$(MAKE) -f fortran-utils/src/CMakeFiles/fortran_utils.dir/build.make fortran-utils/src/CMakeFiles/fortran_utils.dir/build
+.PHONY : fortran_utils/fast
+
+#=============================================================================
+# Target rules for targets named test_savetxt
+
+# Build rule for target.
+test_savetxt: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_savetxt
+.PHONY : test_savetxt
+
+# fast build rule for target.
+test_savetxt/fast:
+	$(MAKE) -f fortran-utils/tests/loadtxt/CMakeFiles/test_savetxt.dir/build.make fortran-utils/tests/loadtxt/CMakeFiles/test_savetxt.dir/build
+.PHONY : test_savetxt/fast
+
+#=============================================================================
+# Target rules for targets named test_loadtxt
+
+# Build rule for target.
+test_loadtxt: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_loadtxt
+.PHONY : test_loadtxt
+
+# fast build rule for target.
+test_loadtxt/fast:
+	$(MAKE) -f fortran-utils/tests/loadtxt/CMakeFiles/test_loadtxt.dir/build.make fortran-utils/tests/loadtxt/CMakeFiles/test_loadtxt.dir/build
+.PHONY : test_loadtxt/fast
+
+#=============================================================================
+# Target rules for targets named test_argsort
+
+# Build rule for target.
+test_argsort: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_argsort
+.PHONY : test_argsort
+
+# fast build rule for target.
+test_argsort/fast:
+	$(MAKE) -f fortran-utils/tests/sort/CMakeFiles/test_argsort.dir/build.make fortran-utils/tests/sort/CMakeFiles/test_argsort.dir/build
+.PHONY : test_argsort/fast
+
+#=============================================================================
+# Target rules for targets named test_sort
+
+# Build rule for target.
+test_sort: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_sort
+.PHONY : test_sort
+
+# fast build rule for target.
+test_sort/fast:
+	$(MAKE) -f fortran-utils/tests/sort/CMakeFiles/test_sort.dir/build.make fortran-utils/tests/sort/CMakeFiles/test_sort.dir/build
+.PHONY : test_sort/fast
+
+#=============================================================================
+# Target rules for targets named test_error
+
+# Build rule for target.
+test_error: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_error
+.PHONY : test_error
+
+# fast build rule for target.
+test_error/fast:
+	$(MAKE) -f fortran-utils/tests/assert_error/CMakeFiles/test_error.dir/build.make fortran-utils/tests/assert_error/CMakeFiles/test_error.dir/build
+.PHONY : test_error/fast
+
+#=============================================================================
+# Target rules for targets named test_assert_pass
+
+# Build rule for target.
+test_assert_pass: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_assert_pass
+.PHONY : test_assert_pass
+
+# fast build rule for target.
+test_assert_pass/fast:
+	$(MAKE) -f fortran-utils/tests/assert_error/CMakeFiles/test_assert_pass.dir/build.make fortran-utils/tests/assert_error/CMakeFiles/test_assert_pass.dir/build
+.PHONY : test_assert_pass/fast
+
+#=============================================================================
+# Target rules for targets named test_assert_fail1
+
+# Build rule for target.
+test_assert_fail1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_assert_fail1
+.PHONY : test_assert_fail1
+
+# fast build rule for target.
+test_assert_fail1/fast:
+	$(MAKE) -f fortran-utils/tests/assert_error/CMakeFiles/test_assert_fail1.dir/build.make fortran-utils/tests/assert_error/CMakeFiles/test_assert_fail1.dir/build
+.PHONY : test_assert_fail1/fast
+
+#=============================================================================
+# Target rules for targets named test_assert_fail2
+
+# Build rule for target.
+test_assert_fail2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_assert_fail2
+.PHONY : test_assert_fail2
+
+# fast build rule for target.
+test_assert_fail2/fast:
+	$(MAKE) -f fortran-utils/tests/assert_error/CMakeFiles/test_assert_fail2.dir/build.make fortran-utils/tests/assert_error/CMakeFiles/test_assert_fail2.dir/build
+.PHONY : test_assert_fail2/fast
+
+#=============================================================================
+# Target rules for targets named test_constants
+
+# Build rule for target.
+test_constants: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_constants
+.PHONY : test_constants
+
+# fast build rule for target.
+test_constants/fast:
+	$(MAKE) -f fortran-utils/tests/constants/CMakeFiles/test_constants.dir/build.make fortran-utils/tests/constants/CMakeFiles/test_constants.dir/build
+.PHONY : test_constants/fast
+
+#=============================================================================
+# Target rules for targets named test_str
+
+# Build rule for target.
+test_str: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_str
+.PHONY : test_str
+
+# fast build rule for target.
+test_str/fast:
+	$(MAKE) -f fortran-utils/tests/strings/CMakeFiles/test_str.dir/build.make fortran-utils/tests/strings/CMakeFiles/test_str.dir/build
+.PHONY : test_str/fast
+
+#=============================================================================
+# Target rules for targets named test_mesh
+
+# Build rule for target.
+test_mesh: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_mesh
+.PHONY : test_mesh
+
+# fast build rule for target.
+test_mesh/fast:
+	$(MAKE) -f fortran-utils/tests/mesh/CMakeFiles/test_mesh.dir/build.make fortran-utils/tests/mesh/CMakeFiles/test_mesh.dir/build
+.PHONY : test_mesh/fast
+
+#=============================================================================
+# Target rules for targets named test_ppm
+
+# Build rule for target.
+test_ppm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_ppm
+.PHONY : test_ppm
+
+# fast build rule for target.
+test_ppm/fast:
+	$(MAKE) -f fortran-utils/tests/ppm/CMakeFiles/test_ppm.dir/build.make fortran-utils/tests/ppm/CMakeFiles/test_ppm.dir/build
+.PHONY : test_ppm/fast
+
+#=============================================================================
+# Target rules for targets named test_bisect
+
+# Build rule for target.
+test_bisect: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_bisect
+.PHONY : test_bisect
+
+# fast build rule for target.
+test_bisect/fast:
+	$(MAKE) -f fortran-utils/tests/optimize/CMakeFiles/test_bisect.dir/build.make fortran-utils/tests/optimize/CMakeFiles/test_bisect.dir/build
+.PHONY : test_bisect/fast
+
+#=============================================================================
+# Target rules for targets named test_besselj
+
+# Build rule for target.
+test_besselj: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_besselj
+.PHONY : test_besselj
+
+# fast build rule for target.
+test_besselj/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_besselj.dir/build.make fortran-utils/tests/special/CMakeFiles/test_besselj.dir/build
+.PHONY : test_besselj/fast
+
+#=============================================================================
+# Target rules for targets named test_hankel1
+
+# Build rule for target.
+test_hankel1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_hankel1
+.PHONY : test_hankel1
+
+# fast build rule for target.
+test_hankel1/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_hankel1.dir/build.make fortran-utils/tests/special/CMakeFiles/test_hankel1.dir/build
+.PHONY : test_hankel1/fast
+
+#=============================================================================
+# Target rules for targets named test_bessely
+
+# Build rule for target.
+test_bessely: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_bessely
+.PHONY : test_bessely
+
+# fast build rule for target.
+test_bessely/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_bessely.dir/build.make fortran-utils/tests/special/CMakeFiles/test_bessely.dir/build
+.PHONY : test_bessely/fast
+
+#=============================================================================
+# Target rules for targets named test_dairybi
+
+# Build rule for target.
+test_dairybi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_dairybi
+.PHONY : test_dairybi
+
+# fast build rule for target.
+test_dairybi/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_dairybi.dir/build.make fortran-utils/tests/special/CMakeFiles/test_dairybi.dir/build
+.PHONY : test_dairybi/fast
+
+#=============================================================================
+# Target rules for targets named test_besseli
+
+# Build rule for target.
+test_besseli: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_besseli
+.PHONY : test_besseli
+
+# fast build rule for target.
+test_besseli/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_besseli.dir/build.make fortran-utils/tests/special/CMakeFiles/test_besseli.dir/build
+.PHONY : test_besseli/fast
+
+#=============================================================================
+# Target rules for targets named test_bessel_zeros
+
+# Build rule for target.
+test_bessel_zeros: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_bessel_zeros
+.PHONY : test_bessel_zeros
+
+# fast build rule for target.
+test_bessel_zeros/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_bessel_zeros.dir/build.make fortran-utils/tests/special/CMakeFiles/test_bessel_zeros.dir/build
+.PHONY : test_bessel_zeros/fast
+
+#=============================================================================
+# Target rules for targets named test_hankel2
+
+# Build rule for target.
+test_hankel2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_hankel2
+.PHONY : test_hankel2
+
+# fast build rule for target.
+test_hankel2/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_hankel2.dir/build.make fortran-utils/tests/special/CMakeFiles/test_hankel2.dir/build
+.PHONY : test_hankel2/fast
+
+#=============================================================================
+# Target rules for targets named test_besselk
+
+# Build rule for target.
+test_besselk: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_besselk
+.PHONY : test_besselk
+
+# fast build rule for target.
+test_besselk/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_besselk.dir/build.make fortran-utils/tests/special/CMakeFiles/test_besselk.dir/build
+.PHONY : test_besselk/fast
+
+#=============================================================================
+# Target rules for targets named test_dairyai
+
+# Build rule for target.
+test_dairyai: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_dairyai
+.PHONY : test_dairyai
+
+# fast build rule for target.
+test_dairyai/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_dairyai.dir/build.make fortran-utils/tests/special/CMakeFiles/test_dairyai.dir/build
+.PHONY : test_dairyai/fast
+
+#=============================================================================
+# Target rules for targets named test_airyai
+
+# Build rule for target.
+test_airyai: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_airyai
+.PHONY : test_airyai
+
+# fast build rule for target.
+test_airyai/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_airyai.dir/build.make fortran-utils/tests/special/CMakeFiles/test_airyai.dir/build
+.PHONY : test_airyai/fast
+
+#=============================================================================
+# Target rules for targets named test_airybi
+
+# Build rule for target.
+test_airybi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_airybi
+.PHONY : test_airybi
+
+# fast build rule for target.
+test_airybi/fast:
+	$(MAKE) -f fortran-utils/tests/special/CMakeFiles/test_airybi.dir/build.make fortran-utils/tests/special/CMakeFiles/test_airybi.dir/build
+.PHONY : test_airybi/fast
+
+#=============================================================================
+# Target rules for targets named test_splines
+
+# Build rule for target.
+test_splines: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_splines
+.PHONY : test_splines
+
+# fast build rule for target.
+test_splines/fast:
+	$(MAKE) -f fortran-utils/tests/splines/CMakeFiles/test_splines.dir/build.make fortran-utils/tests/splines/CMakeFiles/test_splines.dir/build
+.PHONY : test_splines/fast
+
+#=============================================================================
+# Target rules for targets named test_eigh
+
+# Build rule for target.
+test_eigh: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_eigh
+.PHONY : test_eigh
+
+# fast build rule for target.
+test_eigh/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_eigh.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_eigh.dir/build
+.PHONY : test_eigh/fast
+
+#=============================================================================
+# Target rules for targets named test_solve
+
+# Build rule for target.
+test_solve: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_solve
+.PHONY : test_solve
+
+# fast build rule for target.
+test_solve/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_solve.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_solve.dir/build
+.PHONY : test_solve/fast
+
+#=============================================================================
+# Target rules for targets named test_eig
+
+# Build rule for target.
+test_eig: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_eig
+.PHONY : test_eig
+
+# fast build rule for target.
+test_eig/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_eig.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_eig.dir/build
+.PHONY : test_eig/fast
+
+#=============================================================================
+# Target rules for targets named test_inv
+
+# Build rule for target.
+test_inv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_inv
+.PHONY : test_inv
+
+# fast build rule for target.
+test_inv/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_inv.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_inv.dir/build
+.PHONY : test_inv/fast
+
+#=============================================================================
+# Target rules for targets named test_svdvals
+
+# Build rule for target.
+test_svdvals: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_svdvals
+.PHONY : test_svdvals
+
+# fast build rule for target.
+test_svdvals/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_svdvals.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_svdvals.dir/build
+.PHONY : test_svdvals/fast
+
+#=============================================================================
+# Target rules for targets named test_eigvals
+
+# Build rule for target.
+test_eigvals: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_eigvals
+.PHONY : test_eigvals
+
+# fast build rule for target.
+test_eigvals/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_eigvals.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_eigvals.dir/build
+.PHONY : test_eigvals/fast
+
+#=============================================================================
+# Target rules for targets named test_diag
+
+# Build rule for target.
+test_diag: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_diag
+.PHONY : test_diag
+
+# fast build rule for target.
+test_diag/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_diag.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_diag.dir/build
+.PHONY : test_diag/fast
+
+#=============================================================================
+# Target rules for targets named test_eigh_bigger
+
+# Build rule for target.
+test_eigh_bigger: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_eigh_bigger
+.PHONY : test_eigh_bigger
+
+# fast build rule for target.
+test_eigh_bigger/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_eigh_bigger.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_eigh_bigger.dir/build
+.PHONY : test_eigh_bigger/fast
+
+#=============================================================================
+# Target rules for targets named test_det
+
+# Build rule for target.
+test_det: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_det
+.PHONY : test_det
+
+# fast build rule for target.
+test_det/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_det.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_det.dir/build
+.PHONY : test_det/fast
+
+#=============================================================================
+# Target rules for targets named test_lstsq
+
+# Build rule for target.
+test_lstsq: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_lstsq
+.PHONY : test_lstsq
+
+# fast build rule for target.
+test_lstsq/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_lstsq.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_lstsq.dir/build
+.PHONY : test_lstsq/fast
+
+#=============================================================================
+# Target rules for targets named test_svd
+
+# Build rule for target.
+test_svd: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_svd
+.PHONY : test_svd
+
+# fast build rule for target.
+test_svd/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_svd.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_svd.dir/build
+.PHONY : test_svd/fast
+
+#=============================================================================
+# Target rules for targets named test_trace
+
+# Build rule for target.
+test_trace: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_trace
+.PHONY : test_trace
+
+# fast build rule for target.
+test_trace/fast:
+	$(MAKE) -f fortran-utils/tests/linalg/CMakeFiles/test_trace.dir/build.make fortran-utils/tests/linalg/CMakeFiles/test_trace.dir/build
+.PHONY : test_trace/fast
+
 density.o: density.f90.o
 
 .PHONY : density.o
@@ -348,6 +842,44 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... gth.x"
+	@echo "... fortran_utils"
+	@echo "... test_savetxt"
+	@echo "... test_loadtxt"
+	@echo "... test_argsort"
+	@echo "... test_sort"
+	@echo "... test_error"
+	@echo "... test_assert_pass"
+	@echo "... test_assert_fail1"
+	@echo "... test_assert_fail2"
+	@echo "... test_constants"
+	@echo "... test_str"
+	@echo "... test_mesh"
+	@echo "... test_ppm"
+	@echo "... test_bisect"
+	@echo "... test_besselj"
+	@echo "... test_hankel1"
+	@echo "... test_bessely"
+	@echo "... test_dairybi"
+	@echo "... test_besseli"
+	@echo "... test_bessel_zeros"
+	@echo "... test_hankel2"
+	@echo "... test_besselk"
+	@echo "... test_dairyai"
+	@echo "... test_airyai"
+	@echo "... test_airybi"
+	@echo "... test_splines"
+	@echo "... test_eigh"
+	@echo "... test_solve"
+	@echo "... test_eig"
+	@echo "... test_inv"
+	@echo "... test_svdvals"
+	@echo "... test_eigvals"
+	@echo "... test_diag"
+	@echo "... test_eigh_bigger"
+	@echo "... test_det"
+	@echo "... test_lstsq"
+	@echo "... test_svd"
+	@echo "... test_trace"
 	@echo "... density.o"
 	@echo "... density.i"
 	@echo "... density.s"

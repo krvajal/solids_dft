@@ -128,13 +128,13 @@ subroutine khon_sham_loop()
       !           enddo
       !       enddo 
       !   enddo
-        do i =1, numGVects
-            print '(7F10.2)', aimag(hamiltMatrix(i,:))
-        enddo
-        print *, "END"
-         do i =1, numGVects
-            print '(7F10.2)', realpart(hamiltMatrix(i,:))
-        enddo
+        ! do i =1, numGVects
+        !     print '(7F10.2)', aimag(hamiltMatrix(i,:))
+        ! enddo
+        ! print *, "END"
+        !  do i =1, numGVects
+        !     print '(7F10.2)', realpart(hamiltMatrix(i,:))
+        ! enddo
         
         
 
